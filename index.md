@@ -2,8 +2,7 @@
 title: Yzy Blog
 layout: post
 ---
-
-## 使用jekyll新建博客
+![image](/assets/img/index.jpg)
 
 ## 博客平台
 
