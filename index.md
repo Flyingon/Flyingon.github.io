@@ -1,5 +1,5 @@
 ---
-title: Yzy Blog
+title: 欢迎来到袁兆祎的博客
 layout: post
 ---
 ![image](/assets/img/index.jpg)

@@ -1,0 +1,7 @@
+*.pyc
+.idea/
+.DS_Store
+*nohup.out*
+*.log
+*.txt
+_site
