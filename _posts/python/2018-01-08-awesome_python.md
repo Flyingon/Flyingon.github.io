@@ -10,9 +10,9 @@ keywords: python, pip
 
 git上看到对python资源如此全面的整理，比较惊叹，同时也忍不住mark一下，以备开发时方便查找。
 
-本文出自[awesome-python-cn](https://github.com/jobbole/awesome-python-cn/blob/master/README.md)
+本文出自 [awesome-python-cn](https://github.com/jobbole/awesome-python-cn/blob/master/README.md)
 
-感谢:[vinta](https://github.com/vinta/awesome-python)整理出这些优秀的python资源
+感谢[vinta](https://github.com/vinta/awesome-python)整理出这些优秀的python资源
 * * *
 
 ### 环境管理
