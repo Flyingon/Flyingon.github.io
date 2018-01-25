@@ -6,7 +6,10 @@ tags: [coroutine, 协程]
 keywords: coroutine, python, numpy
 ---
 
-### 协程
+### python异步编程博文
+[深入理解 Python 异步编程(上)](http://python.jobbole.com/88291/)
+
+### 关于协程
 Coroutine 也就是 corporate routine，直译为「协同的例程」，中文一般叫做「协程」, 实际上这个概念和进程与线程有相似之处, 因为linux线程就是所谓的「轻量级进程」。
 
 #### 相同点:
