@@ -490,7 +490,7 @@ It is crucial to understand that Python stack frames are allocated in heap memor
 'foo'
 ```
 
-![function-calls](../images/500lines/crawler-images/function-calls.png)
+![function-calls](/assets/img/500lines/crawler-images/function-calls.png)
 
 The stage is now set for Python generators, which use the same building blocks&mdash;code objects and stack frames&mdash;to marvelous effect.
 
@@ -544,7 +544,7 @@ All generators from calls to `gen_fn` point to this same code. But each has its 
 
 来自 `gen_fn` 调用的所有生成器都指向这个相同的代码。但每个都有自己的栈帧。这个栈帧不在任何真实的栈中，它是在堆内存分配并等待被使用:
 
-![generators](../images/500lines/crawler-images/generator.png)
+![generators](/assets/img/500lines/crawler-images/generator.png)
 
 The frame has a "last instruction" pointer, the instruction it executed most recently. In the beginning, the last instruction pointer is -1, meaning the generator has not begun:
 
@@ -928,7 +928,7 @@ When `read` yields a future, the task receives it through the channel of `yield 
 
 当 `read` 产生 future 时，任务通过 `yield from` 语句的通道接收它，就如同 future 直接从 `fetch` 获得。当事件循环执行 futrure 的时候，任务把结果发送给 `fetch`，这个结果值由 `read` 接收，就像任务直接驱动 `read`：
 
-![yield-from](../images/500lines/crawler-images/yield-from.png)
+![yield-from](/assets/img/500lines/crawler-images/yield-from.png)
 
 To perfect our coroutine implementation, we polish out one mar: our code uses `yield` when it waits for a future, but `yield from` when it delegates to a sub-coroutine. It would be more refined if we used `yield from` whenever a coroutine pauses. Then a coroutine need not concern itself with what type of thing it awaits.
 
@@ -1204,7 +1204,7 @@ The `aiohttp` package we use would follow redirects by default and give us the f
 
 我们使用的 `aiohttp` 包将遵循默认的重定向，并给我们最后的响应。然而，我们不告诉它，并且处理爬虫中的重定向，因此它可能合并到指向相同目标的重定向地址：如我我们已经看到过这个 URL ，它在 ``self.seen_urls`` 中并且我们已经从其他入口启动并获取过了这条路径。
 
-![redirects](../images/500lines/crawler-images/redirects.png)
+![redirects](/assets/img/500lines/crawler-images/redirects.png)
 
 The crawler fetches "foo" and sees it redirects to "baz", so it adds "baz" to
 the queue and to ``seen_urls``. If the next page it fetches is "bar", which
