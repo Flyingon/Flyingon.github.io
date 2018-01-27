@@ -9,13 +9,13 @@ keywords: python, asyncio, crawler
 title: A Web Crawler With asyncio Coroutines
 author: A. Jesse Jiryu Davis and Guido van Rossum
 <markdown>
-_A. Jesse Jiryu Davis is a staff engineer at MongoDB in New York. He wrote Motor, the async MongoDB Python driver, and he is the lead developer of the MongoDB C Driver and a member of the PyMongo team. He contributes to asyncio and Tornado. He writes at [http://emptysqua.re](http://emptysqua.re)._
+A. Jesse Jiryu Davis is a staff engineer at MongoDB in New York. He wrote Motor, the async MongoDB Python driver, and he is the lead developer of the MongoDB C Driver and a member of the PyMongo team. He contributes to asyncio and Tornado. He writes at [http://emptysqua.re](http://emptysqua.re).
 
-_A. Jesse Jiryu Davis在纽约为MongoDB工作。他编写了Motor，异步MongoDB Python驱动器，他也是MongoDB C驱动器的首席开发者， 同时他也是PyMango组织的成员之一。他对asyncio和Tornado同样有着杰出贡献。他的博客是 [http://emptysqua.re](http://emptysqua.re)。_
+A. Jesse Jiryu Davis在纽约为MongoDB工作。他编写了Motor，异步MongoDB Python驱动器，他也是MongoDB C驱动器的首席开发者， 同时他也是PyMango组织的成员之一。他对asyncio和Tornado同样有着杰出贡献。他的博客是 [http://emptysqua.re](http://emptysqua.re)。
 
-_Guido van Rossum is the creator of Python, one of the major programming languages on and off the web. The Python community refers to him as the BDFL (Benevolent Dictator For Life), a title straight from a Monty Python skit.  Guido's home on the web is [http://www.python.org/~guido/](http://www.python.org/~guido/)._
+Guido van Rossum is the creator of Python, one of the major programming languages on and off the web. The Python community refers to him as the BDFL (Benevolent Dictator For Life), a title straight from a Monty Python skit.  Guido's home on the web is [http://www.python.org/~guido/](http://www.python.org/~guido/).
 
-_Guido van Rossum，Python之父，Python是目前主要的编程语言之一，无论线上线下。 他在社区里一直是一位仁慈的独裁者，一个来自Monty Python短剧的标题。Guido网上的家是 [http://www.python.org/~guido/](http://www.python.org/~guido/)。_
+Guido van Rossum，Python之父，Python是目前主要的编程语言之一，无论线上线下。 他在社区里一直是一位仁慈的独裁者，一个来自Monty Python短剧的标题。Guido网上的家是 [http://www.python.org/~guido/](http://www.python.org/~guido/)。
 </markdown>
 ## Introduction 介绍
 
