@@ -4,6 +4,7 @@ title: python一句话可以做什么
 category: python
 tags: [python, 一句话, one line]
 keywords: python, oneline
+---
 
 > 本文收集整理自网络, 觉得比较有趣, 所以记录一下
 

@@ -1003,7 +1003,7 @@ Our crawler will fetch the first page, parse its links, and add them to a queue.
 
 Imagine if the workers were threads. How would we express the crawler's algorithm? We could use a synchronized queue[^5] from the Python standard library. Each time an item is put in the queue, the queue increments its count of "tasks". Worker threads call `task_done` after completing work on an item. The main thread blocks on `Queue.join` until each item put in the queue is matched by a `task_done` call, then it exits.
 
-相像一下如果 worker 是线程。我们将如何描述爬虫的算法？我们可以使用 Python 标准库中的同步队列[^5]。每次一个项目被放入队列，队列都会增加其“任务”的计数。工作线程在完成一个项目的工作后调用 `task_done`。主线程在 `Queue.join` 项目加入队列后开始阻塞，直到每一个放入队列的项目被调用的 `task_done` 所匹配，然后退出。
+想像一下如果 worker 是线程。我们将如何描述爬虫的算法？我们可以使用 Python 标准库中的同步队列[^5]。每次一个项目被放入队列，队列都会增加其“任务”的计数。工作线程在完成一个项目的工作后调用 `task_done`。主线程在 `Queue.join` 项目加入队列后开始阻塞，直到每一个放入队列的项目被调用的 `task_done` 所匹配，然后退出。
 
 Coroutines use the exact same pattern with an asyncio queue! First we import it[^6]:
 
