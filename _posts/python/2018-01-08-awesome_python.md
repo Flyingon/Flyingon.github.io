@@ -326,10 +326,12 @@ Python实现的数据库。
     *   ysqlclient：[mysql-python](https://github.com/PyMySQL/mysqlclient-python) 分支，支持 Python 3。
     *   oursql：一个更好的 MySQL 连接器，支持原生预编译指令和 BLOBs.[官网](https://pythonhosted.org/oursql/)
     *   PyMySQL：纯 Python MySQL 驱动，兼容 mysql-python。[官网](https://github.com/PyMySQL/PyMySQL)
+    *   aiomysql: 基于 asyncio 的异步 MySQL 数据库连接器。[官网](http://aiomysql.readthedocs.io/en/latest/)
 *   PostgreSQL
     *   psycopg2：Python 中最流行的 PostgreSQL 适配器。[官网](http://initd.org/psycopg/)
     *   queries：psycopg2 库的封装，用来和 PostgreSQL 进行交互。[官网](https://github.com/gmr/queries)
     *   txpostgres：基于 Twisted 的异步 PostgreSQL 驱动。[官网](http://txpostgres.readthedocs.org/en/latest/)
+    *   aiopg: 基于 asyncio 的 异步 PostgreSQL 驱动。[官网](http://aiopg.readthedocs.io/en/stable/)
 *   其他关系型数据库
     *   apsw：另一个 Python SQLite封装。[官网](http://rogerbinns.github.io/apsw/)
     *   dataset：在数据库中存储Python字典
@@ -1161,7 +1163,8 @@ Python 实现的算法和设计模式。
 *   [The Hitchhiker’s Guide to Python](http://hao.jobbole.com/the-hitchhikers-guide-to-python/)：旅行者的Python学习指南。[官网](http://docs.python-guide.org/en/latest/)
 *	[Code Like a Pythonista: Idiomatic Python](http://top.jobbole.com/18767/)：如何像Python高手(Pythonista)一样编程。[官网](http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html)
 
-###
+### 异步开发库
+*   [aio-libs](https://github.com/aio-libs): 基于asyncio的异步高性能库。 [官网](https://github.com/aio-libs)
 
 <h3 id="websites">知名网站</h3>
 *值得关注的 Python 技术站点。*
