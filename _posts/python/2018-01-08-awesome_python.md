@@ -1166,6 +1166,12 @@ Python 实现的算法和设计模式。
 ### 异步开发库
 *   [aio-libs](https://github.com/aio-libs): 基于asyncio的异步高性能库。 [官网](https://github.com/aio-libs)
 
+### 标准库样例
+*   [https://pymotw.com/3/](https://pymotw.com/3/)
+
+### 流行的 python 模式代码举例
+*   [https://www.programcreek.com/python/index/module/list](https://www.programcreek.com/python/index/module/list)
+
 <h3 id="websites">知名网站</h3>
 *值得关注的 Python 技术站点。*
 
