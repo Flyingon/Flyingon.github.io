@@ -383,7 +383,7 @@ Python实现的数据库。
 *   TurboGears：一个可以扩展为全栈解决方案的微型框架。[官网](http://www.turbogears.org/)
 *   [web.py](http://hao.jobbole.com/python-webpy/)：一个 Python 的 web 框架，既简单，又强大。[官网](http://webpy.org/)
 *   web2py：一个全栈 web 框架和平台，专注于简单易用。[官网](http://www.web2py.com/)
-*   [Tornado](http://hao.jobbole.com/tornado/)：一个web 框架和异步网络库。[官网](http://www.tornadoweb.org/en/latest/)
+*   [Tornado](http://hao.jobbole.com/tornado/)：一个web 框架和异步网络库。[官网](http://www.tornadoweb.org/en/latest/) [中文文档-推荐](http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/structure.html)
 
 ### 权限
 
