@@ -76,7 +76,7 @@ In his influential article "The C10K problem"[^8], Dan Kegel outlines the limita
 
 在 Dan Kegel 那一篇很有影响力的文章“The C10K problem”中，它提出了多线程方式在 I/O 并发上的局限性。他在开始写道，
 
-> It's time for web servers to handle ten thousand clients simultaneously, don't you think? After all, the web is a big place now.
+- It's time for web servers to handle ten thousand clients simultaneously, don't you think? After all, the web is a big place now.
 
 网络服务器到了要同时处理成千上万的客户的时代了，你不这样认为么？毕竟，现在网络规模很大了。
 

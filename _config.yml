@@ -35,8 +35,11 @@ favicon: /assets/img/favicon.ico
 
 # Build settings
 permalink: /:year/:month/:day/:title.html
-markdown: kramdown
-highlighter: rouge
+#markdown: kramdown
+markdown:
+  redcarpet:
+    extensions: [ "hard_wrap","autolink", "tables", "strikethrough", "superscript", "with_toc_data", "highlight", "prettify","no_intra_emphasis"]
+highlighter: pygments
 mathjax: disabled
 sass:
   style: compressed

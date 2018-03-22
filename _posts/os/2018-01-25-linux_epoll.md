@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 通俗的epoll解释(转)
-category: 操作系统
+category: 基础知识
 tags: [操作系统, linux, epoll]
 keywords: os, linux, epoll, select
 ---

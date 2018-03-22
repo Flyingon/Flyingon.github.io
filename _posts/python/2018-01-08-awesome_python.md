@@ -1036,7 +1036,7 @@ MapReduce 框架和库。
 *   ino：操作[Arduino](https://www.arduino.cc/)的命令行工具。[官网](http://inotool.org/) 
 *   Pyro：Python 机器人编程库。[官网](http://pyrorobotics.com/)
 *   PyUserInput：跨平台的，控制鼠标和键盘的模块。[官网](https://github.com/SavinaRoja/PyUserInput)
-*   scapy：一个非常棒的操作数据包的库。[官网](https://github.com/secdev/scapy)
+*   scapy：一个非常棒的操作数据包的库，包括tcp协议栈。[官网](https://github.com/secdev/scapy)
 *   wifi：一个 Python 库和命令行工具用来在 Linux 平台上操作WiFi。[官网](https://wifi.readthedocs.org/en/latest/)
 *   Pingo：Pingo 为类似Raspberry Pi，pcDuino， Intel Galileo等设备提供统一的API用以编程。[官网](http://www.pingo.io/)
 
