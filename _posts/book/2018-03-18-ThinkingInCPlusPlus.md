@@ -21,6 +21,10 @@ keywords: C++, C
 资源: [http://mindviewllc.com/quicklinks/](http://mindviewllc.com/quicklinks/)
 
 ### 编译过程
+#### 基本编译流程
+![c-flow.png](/assets/img/cpp/c-flow.png)
+#### 对应文件变化
+![CompilationProcess.png](/assets/img/cpp/CompilationProcess.png)
 
 ### 基础语法加深
 #### 指针和引用作用
@@ -58,7 +62,7 @@ keywords: C++, C
 #### 内存分配
 标准C动态内存分配: malloc()、calloc()、realloc()、 free()
 
-C++使用关键字new和detelte：
+C++使用关键字new和delete：
 - new: 一般形式：new Type；数组： char* s = new char\[100\];
 - delete: 一般形式：delete 类型实例的指针；数组: delete\[\] s;
 #### 对象
