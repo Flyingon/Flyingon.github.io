@@ -10,6 +10,8 @@ keywords: golang, awesome
 
 awesome-golang: [https://github.com/avelino/awesome-go](https://github.com/avelino/awesome-go)
 
+golang-open-source: [https://github.com/hackstoic/golang-open-source-projects](https://github.com/hackstoic/golang-open-source-projects)
+
 
 ### 常用模块:
 #### gorm:
