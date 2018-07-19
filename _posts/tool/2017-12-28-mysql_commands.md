@@ -6,6 +6,10 @@ tags: [Mysql命令记录]
 keywords: mysql, sql
 ---
 
+### 链接:
+
+MySQL Online DDL： [https://www.cnblogs.com/mysql-dba/p/6192897.html](https://www.cnblogs.com/mysql-dba/p/6192897.html)
+
 ### 外键约束
 #### 禁用外键约束:
 ```

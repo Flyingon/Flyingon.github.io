@@ -1,7 +1,7 @@
 ---
 layout: post
 title: golang和python互相调用
-category: go语言
+category: golang
 tags: [go, golang, python]
 keywords: go, golang, python, 互相调用
 ---
