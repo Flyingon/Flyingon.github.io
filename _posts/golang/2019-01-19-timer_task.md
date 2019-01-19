@@ -14,6 +14,7 @@ Timer官网: [https://golang.org/pkg/time/#pkg-examples](https://golang.org/pkg/
 
 ### Cron
 #### 格式
+
 Field name   | Mandatory? | Allowed values  | Allowed special characters
 ----------   | ---------- | --------------  | --------------------------
 Seconds      | Yes        | 0-59            | * / , -
@@ -41,6 +42,7 @@ Day of week  | Yes        | 0-6 or SUN-SAT  | * / , - ?
 只用于日(Day of month)和星期(Day of week)，\表示不指定值，可以用于代替 *
 ```
 #### 配置示例
+
 Entry                  | Description                                | Equivalent To
 -----                  | -----------                                | -------------
 @yearly (or @annually) | Run once a year, midnight, Jan. 1st        | 0 0 0 1 1 *
