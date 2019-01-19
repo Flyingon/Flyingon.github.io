@@ -36,19 +36,18 @@ favicon: /assets/img/favicon.ico
 # Build settings
 permalink: /:year/:month/:day/:title.html
 
-markdown: kramdown
-kramdown:
-  input: GFM
+#markdown: kramdown
+#kramdown:
+#  input: GFM
+#
+#highlighter: true # rouge
+#mathjax: disabled
+#sass:
+#  style: compressed
 
-highlighter: true # rouge
-mathjax: disabled
-sass:
-  style: compressed
-
-#markdown: redcarpet
-#redcarpet:
-#  extensions: [ "fenced_code_blocks", "hard_wrap","autolink", "tables", "strikethrough", "superscript", "with_toc_data", "highlight", "prettify","no_intra_emphasis"]
-
+markdown: redcarpet
+redcarpet:
+  extensions: [ "fenced_code_blocks", "hard_wrap","autolink", "tables", "strikethrough", "superscript", "with_toc_data", "highlight", "prettify","no_intra_emphasis"]
 
 
 
