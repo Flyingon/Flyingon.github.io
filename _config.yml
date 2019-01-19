@@ -36,6 +36,17 @@ favicon: /assets/img/favicon.ico
 # Build settings
 permalink: /:year/:month/:day/:title.html
 markdown: kramdown
+kramdown:
+  input: GFM
+  extensions:
+  - autolink
+  - footnotes
+  - smart
+  use_coderay: true
+  syntax_highlighter: rouge
+  coderay:
+    coderay_line_numbers:  nil
+
 #markdown: redcarpet
 #redcarpet:
 #  extensions: [ "hard_wrap","autolink", "tables", "strikethrough", "superscript", "with_toc_data", "highlight", "prettify","no_intra_emphasis"]
