@@ -108,3 +108,20 @@ select concat(round(sum(DATA_LENGTH/1024/1024),2),'MB') as data_size,
     -> concat(round(sum(DATA_FREE/1024/1024),2),'MB') as data_free
     -> from INFORMATION_SCHEMA.TABLES where table_schema='CarData' and table_name='driver020294';
 ```
+
+#### 插入更新语句ON DUPLICATE KEY UPDATE
+- if-else写法(效率太差，每次都需要执行两条SQL语句; 高并发的情况下数据会出问题，不能保证原子性):
+```
+if not exists (select node_name from node_status where node_name = target_name)
+      insert into node_status(node_name,ip,...) values('target_name','ip',...)
+else
+      update node_status set ip = 'ip',site = 'site',... where node_name = target_name
+```
+- ON DUPLICATE KEY UPDATE:
+
+如果你插入的记录导致一个UNIQUE索引或者primary key(主键)出现重复，那么就会认为该条记录存在，则执行update语句而不是insert语句，反之，则执行insert语句而不是更新语句。
+
+```
+INSERT INTO tablename(field1,field2, field3, ...) VALUES(value1, value2, value3, ...) ON DUPLICATE KEY UPDATE field1=value1,field2=value2, field3=value3, ...;
+```
+
