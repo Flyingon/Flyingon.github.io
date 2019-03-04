@@ -68,6 +68,7 @@ Entry                  | Description                                | Equivalent
 ```
 #### 代码示例
 - 简单crontab任务
+
 ```
 package main
 
@@ -98,7 +99,9 @@ cron running : 4
 cron running : 5
 ...
 ```
+
 - 多个定时crontab任务
+
 ```
 package main
 
@@ -167,11 +170,12 @@ testJob1...
 ...
 ```
 
-#### timer定时
+### timer定时
 
 代码示例:
+- 按月定时
+
 ```
-// 按月定时
 func StartMonthlyTimer(f func()) {
 	go func() {
 		for {
@@ -192,8 +196,10 @@ func StartMonthlyTimer(f func()) {
 		}
 	}()
 }
+```
 
-// 按分定时
+- 按分定时
+```
 func StartMinuteTimer(intMin uint, f func(interface{}), i interface{}) {
 	go func() {
 		for {
