@@ -69,7 +69,7 @@ Entry                  | Description                                | Equivalent
 #### 代码示例
 - 简单crontab任务
 
-```
+```golang
 package main
 
 import (
@@ -102,7 +102,7 @@ cron running : 5
 
 - 多个定时crontab任务
 
-```
+```golang
 package main
 
 import (
@@ -175,7 +175,7 @@ testJob1...
 代码示例:
 - 按月定时
 
-```
+```golang
 func StartMonthlyTimer(f func()) {
 	go func() {
 		for {
@@ -198,9 +198,9 @@ func StartMonthlyTimer(f func()) {
 }
 ```
 
-- 按分定时
+- 按分钟定时
 
-```
+```golang
 func StartMinuteTimer(intMin uint, f func(interface{}), i interface{}) {
 	go func() {
 		for {
