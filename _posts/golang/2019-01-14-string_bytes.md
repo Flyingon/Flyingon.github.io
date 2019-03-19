@@ -1,9 +1,9 @@
 ---
 layout: post
-title: golang string and []byte
+title: golang string and byte
 category: golang
-tags: [go, golang, []byte, string]
-keywords: go, golang, []byte, string
+tags: [go, golang, bytes, string]
+keywords: go, golang, bytes, string
 ---
 
 ### 网址
