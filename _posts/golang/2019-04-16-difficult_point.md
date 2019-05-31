@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 踩坑记录
+title: 代码踩坑记录
 category: golang
-tags: [go, 踩坑]
-keywords: go, 踩坑
+tags: [go, code, 踩坑]
+keywords: go, code, 踩坑
 ---
 
 ## for循环中地址
