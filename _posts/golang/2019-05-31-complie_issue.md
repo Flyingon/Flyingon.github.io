@@ -11,6 +11,7 @@ keywords: go, complie, 踩坑
 ### 链接错误(link issue)
 
 - 问题现象
+
 ```shell
 go build -o ../bin/app_server -v app_server.go
 
@@ -22,6 +23,7 @@ collect2: error: ld returned 1 exit status
 ```
 
 - 环境版本
+
 ```shell
 go version: go version go1.12.5 linux/amd64
 g++ version: g++ (GCC) 4.8.5 20150623 (Red Hat 4.8.5-5) Copyright (C) 2015 Free Software Foundation, Inc. This is free software; see the source for copying conditions. There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -29,6 +31,7 @@ ld version: GNU ld version 2.23.52.0.1-55.el7 20130226
 ```
 
 - 编译脚本预处理
+
 ```shell
 #!/bin/bash
 source /etc/profile
@@ -40,6 +43,7 @@ if [ -f ~/.bashrc ]; then
 fi
 ```
 其中 ~/.bashrc最后一句包含切换g++版本环境变量命令:
+
 ```shell
 source scl_source enable devtoolset-7
 ```
@@ -53,12 +57,15 @@ source scl_source enable devtoolset-7
 - 问题原因
 
 1. 仔细检查发现/etc/profile文件中最后一句写死了PATH环境变量定义
+
 ```shell
 export PATH=/root/anaconda3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/data/home/go_proj/going_proj/bin:/usr/local/go/bin:/data/home/go_proj/going_proj/tools/FlameGraph:/root/bin:/usr/local/bin:/usr/libexec/git-core
 ```
+
 2. 当执行source /etc/profile初始化包含该语句的profile文件后，切换g++版本环境变量命令无法生效
 
 以下两句，都无法正确的在PATH中添加新版本g++路径：/opt/rh/devtoolset-7/root/usr/bin
+
 ```shell
 source scl_source enable devtoolset-7
 scl enable devtoolset-7 bash
