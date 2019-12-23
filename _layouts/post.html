@@ -40,14 +40,14 @@ layout: default
 {% if site.comments.gitalk %}
 <script>
     var gitalk = new Gitalk({
-        clientID: '{{ site.comments.gitalk_clientID }}',
-        clientSecret: '{{ site.comments.gitalk_Secret }}',
-        repo: '{{ site.comments.gitalk_repo }}',
-        owner: '{{ site.comments.gitalk_owner }}',
-        admin: '{{ site.comments.gitalk_admin }}',
-        id: md5(window.location.pathname),     // Ensure uniqueness and length less than 50{{ page.title }}
-        distractionFreeMode: '{{ site.comments.distractionFreeMode }}'  // Facebook-like distraction free mode
+		clientID: 'ffffa4f83a1acc05407c',
+		clientSecret: 'f705cdd050c30af76062d3f390273bcaa3935a18',
+		repo: 'weijunzii.github.io',
+		owner: 'weijunzii',
+		admin: 'weijunzii',
+		id: md5(window.location.pathname),     // Ensure uniqueness and length less than 50Python 基础 - 0
+		distractionFreeMode: 'true'  // Facebook-like distraction free mode
     });
-    gitalk.render('disqus_thread')
+    gitalk.render('disqus_thread');
 </script>
 {% endif %}
