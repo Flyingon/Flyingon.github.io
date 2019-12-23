@@ -53,14 +53,16 @@ gems:
   - jekyll-seo-tag
   - jekyll-feed
 
+
+# Comments 评论功能
 comments:
-  disqus: true
-  disqus_url:
+  disqus: false
+  disqus_url: 'https://Flyingon.disqus.com/embed.js'
 
   gitalk: true
-    gitalk_clientID: 'f4357cb6b3bd81364ac2'
-    gitalk_Secret: 'a9e57039591f0e8fee24c4ba27c484411c8eef88'
-    gitalk_repo: 'Flyingon.github.io'
-    gitalk_owner: 'Flyingon'
-    gitalk_admin: 'Flyingon'
-    distractionFreeMode: true
+  gitalk_clientID: 'f4357cb6b3bd81364ac2'
+  gitalk_Secret: 'a9e57039591f0e8fee24c4ba27c484411c8eef88'
+  gitalk_repo: 'Flyingon.github.io'
+  gitalk_owner: 'Flyingon'
+  gitalk_admin: 'Flyingon'
+  distractionFreeMode: true
