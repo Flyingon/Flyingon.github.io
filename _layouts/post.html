@@ -2,45 +2,52 @@
 layout: default
 ---
 <article class="post container">
-  <div class="post-meta">
-    <span class="post-meta-span date">{{ page.date | date:"%Y %B %d" }}</span>
-    {% if page.tags.size > 0 %}
-    <span class="post-meta-span tag">{{ page.tags | join: ', ' }}</span>
-    {% endif %}
-  </div>
+    <div class="post-meta">
+        <span class="post-meta-span date">{{ page.date | date:"%Y %B %d" }}</span>
+        {% if page.tags.size > 0 %}
+        <span class="post-meta-span tag">{{ page.tags | join: ', ' }}</span>
+        {% endif %}
+    </div>
 
-  <h1 class="post-title">{{ page.title }}</h1>
-  {{ content }}
+    <h1 class="post-title">{{ page.title }}</h1>
+    {{ content }}
 </article>
 
+<div class="comment container">
+    <div id="disqus_thread">
+        <div id="gitalk_container"></div>
+    </div>
+</div>
+
 <div class="post-share">
-  <div class="container">
-    <a href="https://twitter.com/share?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&text={{ page.title }}" target="_blank" class="post-share-icon twitter"></a>
-    <a href="https://www.evernote.com/clip.action?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&title={{ page.title }}" target="_blank" class="post-share-icon evernote"></a>
-    <a href="http://service.weibo.com/share/share.php?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&title={{ page.title }}" target="_blank" class="post-share-icon weibo"></a>
-  </div>
+    <div class="container">
+        <a href="https://twitter.com/share?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&text={{ page.title }}"
+           target="_blank" class="post-share-icon twitter"></a>
+        <a href="https://www.evernote.com/clip.action?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&title={{ page.title }}"
+           target="_blank" class="post-share-icon evernote"></a>
+        <a href="http://service.weibo.com/share/share.php?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&title={{ page.title }}"
+           target="_blank" class="post-share-icon weibo"></a>
+    </div>
 </div>
 
 {% if site.disqus.shortname %}
 <div class="comment container">
-  <div id="disqus_thread">
-     <div id="gitalk_container"></div>
-  </div>
+    <div id="disqus_thread">
+    </div>
 </div>
 {% endif %}
 
 {% if site.comments.gitalk %}
-  <script>
-      var gitalk = new Gitalk({
-            clientID: '{{ site.comments.gitalk_clientID }}',
-            clientSecret: '{{ site.comments.gitalk_Secret }}',
-            repo: '{{ site.comments.gitalk_repo }}',
-            owner: '{{ site.comments.gitalk_owner }}',
-            admin: '{{ site.comments.gitalk_admin }}',
-            id: location.pathname,      // Ensure uniqueness and length less than 50{{ page.title }}
-            distractionFreeMode: '{{ site.comments.distractionFreeMode }}'  // Facebook-like distraction free mode
-          })
-
-          gitalk.render('disqus_thread')
-  </script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '{{ site.comments.gitalk_clientID }}',
+        clientSecret: '{{ site.comments.gitalk_Secret }}',
+        repo: '{{ site.comments.gitalk_repo }}',
+        owner: '{{ site.comments.gitalk_owner }}',
+        admin: '{{ site.comments.gitalk_admin }}',
+        id: md5(window.location.pathname),     // Ensure uniqueness and length less than 50{{ page.title }}
+        distractionFreeMode: '{{ site.comments.distractionFreeMode }}'  // Facebook-like distraction free mode
+    });
+    gitalk.render('disqus_thread')
+</script>
 {% endif %}
