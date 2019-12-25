@@ -6,7 +6,89 @@ tags: [go, code, 踩坑]
 keywords: go, code, 踩坑
 ---
 
-## for循环中地址
+## for循环中地址问题
+### 遍历有缓冲的chan, 赋值结果到指针数组
+
+测试代码: [chan2Slice](https://github.com/Flyingon/code_tpl_go/blob/master/for_channel/chan2slice/chan2Slice.go) 
+
+缓冲chan通常用作多协程的结果返回
+
+- 异常代码
+
+```go
+// 循环读取channel，取地址append到数组
+type ChanStruct struct {
+	Num  int
+	Data string
+}
+
+func main() {
+	// 定义chan
+	ptrChan := make(chan ChanStruct, 10)
+	for i:= 1;i < 10;i++ {
+		cs := ChanStruct {
+			Num: i,
+			Data: strconv.Itoa(i),
+		}
+		ptrChan <- cs
+	}
+	close(ptrChan)
+	var csList []*ChanStruct
+	// 从chan取数据，放入csList中
+	for c := range ptrChan {
+		csList = append(csList, &c)
+	}
+	for _, cs := range csList {
+		fmt.Printf("cs: %d, %s\n", cs.Num, cs.Data)
+	}
+}
+```
+
+- 输出结果
+
+结果不符合预期，新数组中所有元素都是同一个地址
+
+```go
+cs: 0xc000086000, 9, 9
+cs: 0xc000086000, 9, 9
+cs: 0xc000086000, 9, 9
+...
+```
+
+- 正确方式
+
+_for循环的局部变量地址是不会变的，如果要赋值地址给别人，需要新生成对象，再取地址_
+
+```go
+// 循环读取channel，取地址append到数组
+type ChanStruct struct {
+	Num  int
+	Data string
+}
+
+func main() {
+	// 定义chan
+	ptrChan := make(chan ChanStruct, 10)
+	for i:= 1;i < 10;i++ {
+		cs := ChanStruct {
+			Num: i,
+			Data: strconv.Itoa(i),
+		}
+		ptrChan <- cs
+	}
+	close(ptrChan)
+	var csList []*ChanStruct
+	// 从chan取数据，放入csList中
+	for c := range ptrChan {
+		temp := c
+		csList = append(csList, &temp)
+	}
+	for _, cs := range csList {
+		fmt.Printf("cs: %d, %s\n", cs.Num, cs.Data)
+	}
+}
+```
+
 
 ### 遍历指针数组，赋值到新数组中
 - 异常代码
