@@ -1,8 +1,8 @@
 # Site settings
-title: 袁兆祎的博客
+title: Flyinon的博客
 email: yuan.zhaoyi@163.com
 description: > # this means to ignore newlines until "baseurl:"
-  袁兆祎的博客
+  Flyingon的博客
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://blog.yuanzhaoyi.cn"  # the base hostname & protocol for your site
 rss_url: /pages/feed.xml
