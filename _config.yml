@@ -66,3 +66,6 @@ comments:
   gitalk_owner: 'Flyingon'
   gitalk_admin: 'Flyingon'
   distractionFreeMode: true
+
+# reward 打赏
+reward: true

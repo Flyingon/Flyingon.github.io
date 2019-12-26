@@ -13,11 +13,24 @@ layout: default
     {{ content }}
 </article>
 
+{% if site.comments.gitalk %}
 <div class="comment container">
     <div id="disqus_thread">
         <div id="gitalk_container"></div>
     </div>
 </div>
+{% endif %}
+
+{% if site.reward %}
+<link  href="/assets/css/myreward.css" rel="stylesheet"  type="text/css">
+ <div class="reward">
+		<div class="reward-button">赏 <span class="reward-code">
+			<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/assets/img/social/Alipyspeed.jpeg"><b>支付宝打赏</b> </span>
+			<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/assets/img/social/Wechatspeed.jpeg"><b>微信打赏</b> </span> </span>
+		</div>
+		<p class="reward-notice">您的打赏是对我最大的鼓励！</p>
+	</div>
+{% endif %}
 
 <div class="post-share">
     <div class="container">
