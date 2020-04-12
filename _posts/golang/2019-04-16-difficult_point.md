@@ -7,8 +7,8 @@ keywords: go, code, 踩坑
 ---
 
 ## for循环中地址问题
-### 遍历有缓冲的chan, 赋值结果到指针数组
 
+### 遍历有缓冲的chan, 赋值结果到指针数组
 测试代码: [chan2Slice](https://github.com/Flyingon/code_tpl_go/blob/master/for_channel/chan2slice/chan2Slice.go) 
 
 缓冲chan通常用作多协程的结果返回
@@ -89,112 +89,78 @@ func main() {
 }
 ```
 
+### 遍历指针数组，使用遍历时的临时变量
 
-### 遍历指针数组，赋值到新数组中
-- 异常代码
+测试代码: [for_with_coroutine](https://github.com/Flyingon/code_tpl_go/blob/master/for_closure/for_with_coroutine.go) 
 
-遍历结构体数组tArray，复制该数组中每个元素Data的指针到新的指针数组retArray中
-
+- 错误示例1: 
+代码片段:
 ```go
-type TArray struct {
-    Data string
-}
-
-func main() {
-    data1 := "value1"
-    data2 := "value2"
-    tArray := [] TArray{
-        {
-            data1,
-        }, {
-            data2,
-        },
-    }
-    var retArray []*string
-    for i, v := range tArray {
-        fmt.Printf("cycle %d time, v addr: %p\n", i, &v)
-        fmt.Printf("cycle %d time, current tArray instance data addr: %p, value: %s\n", i, &(v.Data), v.Data)
-        retArray = append(retArray, &(v.Data))
-    }
-    fmt.Printf("ret array: %+v\n", retArray)
-    for _, r := range retArray {
-        fmt.Printf("%s ", *r)
-    }
-}
+	for i, v := range dataList {
+		go func() {
+			defer wg.Done()
+			fmt.Printf("cycle %d time, index addr: %p, data addr: %p, value: %s\n", i, &i, &(v.Data), v.Data)
+		}()
+	}
+```
+返回: 
+```go
+cycle 4 time, index addr: 0xc000088020, data addr: 0xc000062230, value: value5
+cycle 4 time, index addr: 0xc000088020, data addr: 0xc000062230, value: value5
+cycle 4 time, index addr: 0xc000088020, data addr: 0xc000062230, value: value5
+cycle 4 time, index addr: 0xc000088020, data addr: 0xc000062230, value: value5
+cycle 4 time, index addr: 0xc000088020, data addr: 0xc000062230, value: value5
 ```
 
-- 输出结果
-
-结果不符合预期，新数组中两个元素是同一个地址，即同一个元素
-
+- 正确示例1：
+代码片段:
 ```go
-cycle 0 time, v addr: 0xc0420481d0
-cycle 0 time, current tArray instance data addr: 0xc0420481d0, value: value1
-cycle 1 time, v addr: 0xc0420481d0
-cycle 1 time, current tArray instance data addr: 0xc0420481d0, value: value2
-ret array: [0xc0420481d0 0xc0420481d0]
-value2 value2 
+for i, v := range dataList {
+		go func(index int, elem *Elem) {
+			defer wg.Done()
+			fmt.Printf("cycle %d time, index addr: %p, data addr: %p, value: %s\n", index, &index, &(elem.Data), elem.Data)
+		}(i, v)
+	}
+```
+返回: 
+```go
+cycle 0 time, index addr: 0xc000092010, data addr: 0xc0000621e0, value: value1
+cycle 4 time, index addr: 0xc000096020, data addr: 0xc000062230, value: value5
+cycle 3 time, index addr: 0xc000096030, data addr: 0xc000062220, value: value4
+cycle 1 time, index addr: 0xc000018098, data addr: 0xc0000621f0, value: value2
+cycle 2 time, index addr: 0xc000092018, data addr: 0xc000062210, value: value3
 ```
 
-- 正确方式
-
-1. 遍历指针数组不会有该问题，每个元素都有独立地址
-
+- 错误示例2：
+代码片段:
 ```go
-type TArray struct {
-    Data string
-}
-
-func main() {
-    data1 := "value1"
-    data2 := "value2"
-    tArray := [] *TArray{
-        {
-            data1,
-        }, {
-            data2,
-        },
-    }
-    var retArray []*string
-    for i, v := range tArray {
-        fmt.Printf("cycle %d time, v addr: %p\n", i, &v)
-        fmt.Printf("cycle %d time, current tArray instance data addr: %p, value: %s\n", i, &(v.Data), v.Data)
-        retArray = append(retArray, &(v.Data))
-    }
-    fmt.Printf("ret array: %+v\n", retArray)
-    for _, r := range retArray {
-        fmt.Printf("%s ", *r)
-    }
-}
+for i, v := range dataList {
+		go DataPrintV3(&wg, &i, v)
+	}
+```
+返回: 
+```go
+cycle 4 time, index addr: 0xc000092028, data addr: 0xc0000621e0, value: value1
+cycle 4 time, index addr: 0xc000092028, data addr: 0xc000062230, value: value5
+cycle 4 time, index addr: 0xc000092028, data addr: 0xc0000621f0, value: value2
+cycle 4 time, index addr: 0xc000092028, data addr: 0xc000062210, value: value3
+cycle 4 time, index addr: 0xc000092028, data addr: 0xc000062220, value: value4
 ```
 
-2. 给遍历的结构体Data重新分配地址，赋值到newData
-
+- 正确示例2：
+代码片段:
 ```go
-type TArray struct {
-    Data string
-}
-
-func main() {
-    data1 := "value1"
-    data2 := "value2"
-    tArray := [] TArray{
-        {
-            data1,
-        }, {
-            data2,
-        },
-    }
-    var retArray []*string
-    for i, v := range tArray {
-        fmt.Printf("cycle %d time, v addr: %p\n", i, &v)
-        fmt.Printf("cycle %d time, current tArray instance data addr: %p, value: %s\n", i, &(v.Data), v.Data)
-        newData := v.Data
-        retArray = append(retArray, &newData)
-    }
-    fmt.Printf("ret array: %+v\n", retArray)
-    for _, r := range retArray {
-        fmt.Printf("%s ", *r)
-    }
-}
+	for i, v := range dataList {
+		go DataPrintV4(&wg, i, v)
+	}
 ```
+返回: 
+```go
+cycle 4 time, index addr: 0xc000088050, data addr: 0xc000062230, value: value5
+cycle 2 time, index addr: 0xc000088060, data addr: 0xc000062210, value: value3
+cycle 3 time, index addr: 0xc000088070, data addr: 0xc000062220, value: value4
+cycle 0 time, index addr: 0xc000088080, data addr: 0xc0000621e0, value: value1
+cycle 1 time, index addr: 0xc0000180b0, data addr: 0xc0000621f0, value: value2
+```
+
+## map并发读写问题
