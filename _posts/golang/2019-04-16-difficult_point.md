@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 代码踩坑记录
+title: 踩坑记录
 category: golang
 tags: [go, code, 踩坑]
 keywords: go, code, 踩坑
@@ -94,6 +94,7 @@ func main() {
 测试代码: [for_with_coroutine](https://github.com/Flyingon/code_tpl_go/blob/master/for_closure/for_with_coroutine.go) 
 
 - 错误示例1: 
+
 代码片段:
 ```go
 	for i, v := range dataList {
@@ -113,6 +114,7 @@ cycle 4 time, index addr: 0xc000088020, data addr: 0xc000062230, value: value5
 ```
 
 - 正确示例1：
+
 代码片段:
 ```go
 for i, v := range dataList {
@@ -132,6 +134,7 @@ cycle 2 time, index addr: 0xc000092018, data addr: 0xc000062210, value: value3
 ```
 
 - 错误示例2：
+
 代码片段:
 ```go
 for i, v := range dataList {
@@ -148,6 +151,7 @@ cycle 4 time, index addr: 0xc000092028, data addr: 0xc000062220, value: value4
 ```
 
 - 正确示例2：
+
 代码片段:
 ```go
 	for i, v := range dataList {
