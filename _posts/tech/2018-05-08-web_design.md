@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 网络服务设计
-category: 工具
+category: 技术
 tags: [web，design]
 keywords: design， web
 ---

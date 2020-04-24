@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 一些基本算法总结
-category: 工具
+category: 技术
 tags: [算法，基础]
 keywords: algorithm
 ---
