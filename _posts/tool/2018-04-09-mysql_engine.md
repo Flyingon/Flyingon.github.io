@@ -83,3 +83,7 @@ InnoDB，是MySQL的数据库引擎之一，为MySQL AB发布binary的标准之�
 - MyISAM：不支持
 - InnoDB：支持
 通过上述的分析，基本上可以考虑使用InnoDB来替代MyISAM引擎了，原因是InnoDB自身很多良好的特点，比如事务支持、存储 过程、视图、行级锁定等等，在并发很多的情况下，相信InnoDB的表现肯定要比MyISAM强很多。另外，任何一种表都不是万能的，只用恰当的针对业务类型来选择合适的表类型，才能最大的发挥MySQL的性能优势。如果不是很复杂的Web应用，非关键应用，还是可以继续考虑MyISAM的，这个具体情况可以自己斟酌。
+
+##### binlog
+
+- 参考: [https://zhuanlan.zhihu.com/p/33504555](https://zhuanlan.zhihu.com/p/33504555)
