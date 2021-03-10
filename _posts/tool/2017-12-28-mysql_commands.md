@@ -61,11 +61,11 @@ alter table basicintelprop add id int auto_increment Unique;
 CREATE INDEX `idx_cnipsundata__agent` ON `cnipsundata` (`agent`)
 ```
 #### 删除索引
-```
+```sql
 ALTER TABLE `wenshu_data`.`lawyerinfo` DROP INDEX `idx_lawyerinfo__name`;
 ```
 #### 修改复合索引
-```
+```sql
 ALTER TABLE `wenshu_data`.`lawyerinfo` DROP INDEX `idx_lawyerinfo__name__lawyer_firm__region`, ADD INDEX `idx_lawyerinfo__name__lawyer_firm__region1` USING BTREE (`name`, `lawyer_firm`, `region`) comment '';
 ```
 ![composite-index](/assets/img/tool/mysql/composite-index.png)
@@ -89,19 +89,19 @@ Records: 0  Duplicates: 0  Warnings: 0
 
 ### 查看MySQL数据库大小
 #### 查看所有数据库大小
-```
+```sql
 select concat(round(sum(DATA_LENGTH/1024/1024),2),'MB') as data from INFORMATION_SCHEMA.TABLES;
 ```
 #### 查看指定数据库大小
-```
+```sql
 select concat(round(sum(DATA_LENGTH/1024/1024),2),'MB') as data from INFORMATION_SCHEMA.TABLES where table_schema='CarData';
 ```
 #### 查看指定数据库的指定表的大小
-```
+```sql
 select concat(round(sum(DATA_LENGTH/1024/1024),2),'MB') as data from INFORMATION_SCHEMA.TABLES where table_schema='CarData' and table_name='driver020294';
 ```
 #### 查看指定数据库指定表的其他大小
-```
+```sql
 select concat(round(sum(DATA_LENGTH/1024/1024),2),'MB') as data_size,
     -> concat(round(sum(MAX_DATA_LENGTH/1024/1024),2),'MB') as max_data_size,
     -> concat(round(sum(INDEX_LENGTH/1024/1024),2),'MB') as index_size,
@@ -121,7 +121,55 @@ else
 
 如果你插入的记录导致一个UNIQUE索引或者primary key(主键)出现重复，那么就会认为该条记录存在，则执行update语句而不是insert语句，反之，则执行insert语句而不是更新语句。
 
-```
+```sql
 INSERT INTO tablename(field1,field2, field3, ...) VALUES(value1, value2, value3, ...) ON DUPLICATE KEY UPDATE field1=value1,field2=value2, field3=value3, ...;
 ```
 
+#### 创建utf8mb4数据库
+
+```sql
+create database sina default character set utf8mb4 collate utf8mb4_unicode_ci;
+```
+
+#### 任务系统表-基于date分区
+
+```sql
+CREATE TABLE task.`task_list_default` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '任务id',
+  `date` int(11) NOT NULL COMMENT '分区字段',
+  `task_type` varchar(64) NOT NULL COMMENT '任务分类',
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '任务状态',
+  `channel` varchar(32) NOT NULL COMMENT '任务渠道',
+  `parent_ids` varchar(64) DEFAULT '' COMMENT '所依赖的父节点',
+  `child_ids` varchar(64) DEFAULT '' COMMENT '被依赖的子节点',
+  `begin_time` timestamp NULL DEFAULT NULL COMMENT '任务开始时间',
+  `end_time` timestamp NULL DEFAULT NULL COMMENT '任务结束时间',
+  `phases` json COMMENT '任务启停重试记录',
+  `is_once` bool DEFAULT false COMMENT '是否一次性任务，默认是false',
+  `max_retry` tinyint(4) NOT NULL DEFAULT '10' COMMENT '最大重试次数',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `delete_time` timestamp NULL DEFAULT NULL COMMENT '删除时间',
+  PRIMARY KEY (`id`, `date`),
+  KEY `idx_task_type` (`task_type`) USING BTREE,
+  KEY `idx_status` (`status`) USING BTREE,
+  KEY `idx_channel` (`channel`) USING BTREE,
+  KEY `idx_create_time` (`create_time`) USING BTREE
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='默认渠道任务列表' PARTITION BY RANGE (date)
+(PARTITION p202103 VALUES LESS THAN (202104) ENGINE = InnoDB,
+ PARTITION p202104 VALUES LESS THAN (202105) ENGINE = InnoDB,
+ PARTITION p202105 VALUES LESS THAN (202106) ENGINE = InnoDB,
+ PARTITION p202106 VALUES LESS THAN (202107) ENGINE = InnoDB,
+ PARTITION p202107 VALUES LESS THAN (202108) ENGINE = InnoDB,
+ PARTITION p202108 VALUES LESS THAN (202109) ENGINE = InnoDB,
+ PARTITION p202109 VALUES LESS THAN (202110) ENGINE = InnoDB,
+ PARTITION p202110 VALUES LESS THAN (202111) ENGINE = InnoDB,
+ PARTITION p202111 VALUES LESS THAN (202112) ENGINE = InnoDB,
+ PARTITION p202112 VALUES LESS THAN (202201) ENGINE = InnoDB,
+ PARTITION p202201 VALUES LESS THAN (202202) ENGINE = InnoDB);
+```
+```sql
+CREATE TRIGGER `task_list_default_date` BEFORE INSERT ON task.`task_list_default` FOR EACH ROW set new.date=date_format(current_date(), '%Y%m');
+CREATE TRIGGER `task_list_default_insert` BEFORE INSERT ON task.`task_list_default` FOR EACH ROW set new.create_time=current_date;
+CREATE TRIGGER `task_list_default_update` BEFORE UPDATE ON task.`task_list_default` FOR EACH ROW set new.update_time=current_date;
+```
