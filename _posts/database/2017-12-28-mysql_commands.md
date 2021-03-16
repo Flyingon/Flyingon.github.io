@@ -1,7 +1,7 @@
 ---
 layout: post
 title: mysql命令记录
-category: 工具
+category: 数据库
 tags: [Mysql命令记录]
 keywords: mysql, sql
 ---
