@@ -3,6 +3,7 @@ layout: null
 ---
 
 $(function() {
+  console.log("AAAAAA: ", site.show_categories);
   var toc     = $('.toc-link'),
       sidebar = $('#sidebar'),
       main    = $('#main'),
