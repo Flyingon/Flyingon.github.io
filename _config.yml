@@ -69,3 +69,14 @@ comments:
 
 # reward 打赏
 reward: true
+
+categories:
+  - 计算机和OS
+  - 架构
+  - 数据库
+  - 算法和数据结构
+  - 前端
+  - golang
+  - python
+  - cpp
+  - 工具
