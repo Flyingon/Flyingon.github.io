@@ -1,7 +1,7 @@
 ---
 layout: post
 title: C++编程思想
-category: 读书笔记
+category: cpp
 tags: [C++, C]
 keywords: C++, C
 ---

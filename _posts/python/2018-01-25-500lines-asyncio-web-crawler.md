@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 500lines异步网页爬虫学习和翻译
-category: 读书笔记
+category: python
 tags: [500lines, asyncio, crawler]
 keywords: python, asyncio, crawler
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 架构建设
-category: 技术
+category: 架构
 tags: [architecture, server, web, app]
 keywords: 服务架构，后台，前端，终端
 ---
