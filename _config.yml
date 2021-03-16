@@ -12,6 +12,7 @@ author: Zhaoyi Yuan
 # Choose 'tag' or 'category' as filter in sidebar.
 filter: 'category'
 recent_num: 20
+show_categories: [计算机和OS, 架构, 数据库, 算法和数据结构, 前端, golang, python, cpp, 工具]
 
 # Social account
 twitter:
@@ -70,13 +71,3 @@ comments:
 # reward 打赏
 reward: true
 
-categories:
-  - 计算机和OS
-  - 架构
-  - 数据库
-  - 算法和数据结构
-  - 前端
-  - golang
-  - python
-  - cpp
-  - 工具
