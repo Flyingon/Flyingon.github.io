@@ -13,7 +13,8 @@
     <ul id="sidebar-tags">
       <li class="sidebar-tag active" data-filter="recent">最新文章</li>
       {% if site.filter == 'category' %}
-        {% for category in site.categories %}
+        {% assign show_categories = "计算机和OS, 架构, 数据库, 算法和数据结构, 前端, golang, python, cpp, 工具" | split: ", " %}
+        {% for category in show_categories %}
           <li class="sidebar-tag" data-filter="{{ category | first }}">{{ category | first }}</li>
         {% endfor %}
       {% elsif site.filter == 'tag' %}
