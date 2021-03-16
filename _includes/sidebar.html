@@ -12,9 +12,8 @@
 
     <ul id="sidebar-tags">
       <li class="sidebar-tag active" data-filter="recent">最新文章</li>
-      <li class="sidebar-tag" data-filter="计算机和OS">计算机和OS</li>
       {% if site.filter == 'category' %}
-        {% for category in site.categories %}
+        {% for category in site.show_categories %}
           <li class="sidebar-tag" data-filter="{{ category | first }}">{{ category | first }}</li>
         {% endfor %}
       {% elsif site.filter == 'tag' %}
