@@ -3,7 +3,6 @@ layout: null
 ---
 
 $(function() {
-  console.log("AAAAAA: ", site.show_categories);
   var toc     = $('.toc-link'),
       sidebar = $('#sidebar'),
       main    = $('#main'),
@@ -47,7 +46,7 @@ $(function() {
       var target = $(this.hash);
       main.animate({scrollTop: target.offset().top + main.scrollTop() - 70}, 500);
     });
-
+    console.log("AAAAAA: ", site.show_categories);
     // discus comment.
     {% if site.disqus.shortname %}
       var ds_loaded = false;
