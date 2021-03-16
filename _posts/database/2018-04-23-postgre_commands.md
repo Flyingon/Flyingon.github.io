@@ -1,7 +1,7 @@
 ---
 layout: post
 title: postgre命令记录
-category: 工具
+category: 数据库
 tags: [postgre命令记录]
 keywords: postgre, sql
 ---

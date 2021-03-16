@@ -1,7 +1,7 @@
 ---
 layout: post
 title: sqllite命令
-category: 工具
+category: 数据库
 tags: [sqllite, cmd]
 keywords: sqllite, cmd
 ---

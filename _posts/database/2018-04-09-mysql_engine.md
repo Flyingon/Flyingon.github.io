@@ -1,7 +1,7 @@
 ---
 layout: post
 title: mysql基础，engine介绍
-category: 工具
+category: 数据库
 tags: [Mysql, Engine]
 keywords: mysql, engine
 ---

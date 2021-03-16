@@ -1,7 +1,7 @@
 ---
 layout: post
 title: mysql调优
-category: 工具
+category: 数据库
 tags: [Mysql, optimized]
 keywords: mysql, optimized
 ---
