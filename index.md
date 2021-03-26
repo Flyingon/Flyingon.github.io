@@ -1,5 +1,5 @@
 ---
-title: 欢迎来到Flyingon的博客
+title: 记录分享成长
 layout: post
 ---
 ![image](/assets/img/index.jpg)
