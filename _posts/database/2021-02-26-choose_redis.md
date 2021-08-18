@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Redis选型
+title: redis选型-高可用
 category: 数据库
 tags: [redis]
 keywords: redis

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: mysql调优，explain功能介绍
+title: mysql调优和explain功能介绍
 category: 数据库
 tags: [Mysql, Explain功能介绍]
 keywords: mysql, explain

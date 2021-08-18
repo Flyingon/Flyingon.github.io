@@ -1,6 +1,6 @@
 ---
 layout: post
-title: mysql基础，engine介绍
+title: mysql基础和engine介绍
 category: 数据库
 tags: [Mysql, Engine]
 keywords: mysql, engine
