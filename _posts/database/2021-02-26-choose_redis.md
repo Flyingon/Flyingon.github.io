@@ -6,6 +6,27 @@ tags: [redis]
 keywords: redis
 ---
 
+
+## 参数对比
+
+| 产品名称   | 腾讯云Redis标准版                      | 腾讯云Redis集群版            | Tendis存储版                  | Tendis ssd                   |
+| ---------- | -------------------------------------- | ---------------------------- | ----------------------------- | ---------------------------- |
+| 实现原理   | 原生的 Redis                           | Redis官方集群方案            | 自研，实现redis协议，磁盘存储 | 自研，实现redis协议，ssd存储 |
+| 可扩展性   | **0.25GB  - 64GB，****不支持水平扩容** | 4GB - 20TB，支持水平扩容     | 240GB - 32TB，支持水平扩容    | 240GB - 32TB，支持水平扩容   |
+| 命令兼容性 | 最全                                   | 极少数集群命令不支持         | **较多命令不支持**            | 少数命令不支持               |
+| 性能       | 8万  -  10万(2核8G),延时低             | 24-30万 (单节点2核8G),延时低 | **延时高**                    | 24万(24分片)，热数据延时低   |
+| 成本       | 较高                                   | **极高**                     | 极低                          | 极低                         |
+| 轻松运维   | 腾讯云，工具链完善                     | 腾讯云，工具链完善           | SCR平台，基本满足             | SCR平台，基本满足            |
+
+
+### 参考：
+
+腾讯云redis: [https://cloud.tencent.com/document/product/239/3205](https://cloud.tencent.com/document/product/239/3205)
+腾讯云tendis: [https://cloud.tencent.com/document/product/1363/50795](https://cloud.tencent.com/document/product/1363/50795)
+tedis官网: [http://tendis.cn/#/](http://tendis.cn/#/)
+Redis vs Tendis：冷热混合存储版架构揭秘: [https://aijishu.com/a/1060000000199100](https://aijishu.com/a/1060000000199100)
+tedis视频: [https://cloud.tencent.com/developer/salon/live-1326](https://cloud.tencent.com/developer/salon/live-1326)
+
 ## Redis主备切换
 参考(阿里云): [https://help.aliyun.com/document_detail/100734.html](https://help.aliyun.com/document_detail/100734.html)
 
