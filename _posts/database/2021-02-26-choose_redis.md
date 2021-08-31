@@ -21,11 +21,11 @@ keywords: redis
 
 ### 参考：
 
-腾讯云redis: [https://cloud.tencent.com/document/product/239/3205](https://cloud.tencent.com/document/product/239/3205)
-腾讯云tendis: [https://cloud.tencent.com/document/product/1363/50795](https://cloud.tencent.com/document/product/1363/50795)
-tedis官网: [http://tendis.cn/#/](http://tendis.cn/#/)
-Redis vs Tendis：冷热混合存储版架构揭秘: [https://aijishu.com/a/1060000000199100](https://aijishu.com/a/1060000000199100)
-tedis视频: [https://cloud.tencent.com/developer/salon/live-1326](https://cloud.tencent.com/developer/salon/live-1326)
+- 腾讯云redis: [https://cloud.tencent.com/document/product/239/3205](https://cloud.tencent.com/document/product/239/3205)
+- 腾讯云tendis: [https://cloud.tencent.com/document/product/1363/50795](https://cloud.tencent.com/document/product/1363/50795)
+- tedis官网: [http://tendis.cn/#/](http://tendis.cn/#/)
+- Redis vs Tendis：冷热混合存储版架构揭秘: [https://aijishu.com/a/1060000000199100](https://aijishu.com/a/1060000000199100)
+- tedis视频: [https://cloud.tencent.com/developer/salon/live-1326](https://cloud.tencent.com/developer/salon/live-1326)
 
 ## Redis主备切换
 参考(阿里云): [https://help.aliyun.com/document_detail/100734.html](https://help.aliyun.com/document_detail/100734.html)
