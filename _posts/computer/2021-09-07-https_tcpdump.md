@@ -13,12 +13,12 @@ keywords: https, tcp, tls
 ![ssl_flow](/assets/img/ssl/ssl_flow.png)
 
 流程：
-```
-client hello
-server hello
-client key exchange
-change cipher spec
-```
+
+- client hello
+- server hello
+- client key exchange
+- change cipher spec
+
 
 ## 抓包分析： 
 
