@@ -6,20 +6,54 @@ tags: [Mysql命令记录]
 keywords: mysql, sql
 ---
 
-### 链接:
+## 链接:
 
 MySQL Online DDL： [https://www.cnblogs.com/mysql-dba/p/6192897.html](https://www.cnblogs.com/mysql-dba/p/6192897.html)
 
-### 外键约束
-#### 禁用外键约束:
+## 分区键、主键和唯一键(Partitioning Keys, Primary Keys, and Unique Keys)
+
+参考: [https://dev.mysql.com/doc/mysql-partitioning-excerpt/8.0/en/partitioning-limitations-partitioning-keys-unique-keys.html](https://dev.mysql.com/doc/mysql-partitioning-excerpt/8.0/en/partitioning-limitations-partitioning-keys-unique-keys.html)
+
+### !唯一键不能包含空值
+
+比如下面的写法unique_userid不会唯一，可以插入多条deleted_at为null的数据: 
+```
+CREATE TABLE `pay_flow_qq`
+(
+    `id`              bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `user_id`         bigint(20) unsigned DEFAULT NULL COMMENT '用户id',
+    `bill_no`         varchar(64) NOT NULL COMMENT '订单号',
+    `amount`          bigint(20) DEFAULT NULL COMMENT '发放金额',
+    `status`          bigint(20) DEFAULT NULL COMMENT '状态',
+    `created_at`      datetime(3) DEFAULT NULL COMMENT '创建时间',
+    `updated_at`      datetime(3) DEFAULT NULL COMMENT '更新时间',
+    `deleted_at`      datetime(3) DEFAULT NULL COMMENT '删除时间',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `unique_userid`(`user_id`, `deleted_at`),
+    KEY               `idx_userid` ( `user_id`, `deleted_at` ),
+    KEY               `idx_billno` ( `bill_no`, `deleted_at` ),
+    KEY               `idx_amount` ( `amount`, `deleted_at` ),
+    KEY               `idx_status` ( `status`, `deleted_at` ),
+    KEY               `idx_pay_flows_deleted_at` (`deleted_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+```
+
+建议改进方案：
+```
+    `deleted_at_unix` int (10) DEFAULT 0 COMMENT '删除时间戳',  // 增加这个非空字段
+    UNIQUE KEY `unique_userid`(`user_id`, `deleted_at_unix`),  // 用非空字段创建唯一键
+```
+
+## 外键约束
+### 禁用外键约束:
 ```
 SET FOREIGN_KEY_CHECKS=0
 ```
-#### 启动外键约束:
+### 启动外键约束:
 ```
 SET FOREIGN_KEY_CHECKS=1;
 ```
-#### 查看当前FOREIGN_KEY_CHECKS的值可用如下命令:
+### 查看当前FOREIGN_KEY_CHECKS的值可用如下命令:
 ```
 SELECT  @@FOREIGN_KEY_CHECKS;
 ```
