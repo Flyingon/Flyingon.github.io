@@ -6,7 +6,7 @@ tags: [Mysql命令记录]
 keywords: mysql, sql
 ---
 
-## 链接:
+## 在线表结构修改(Online DDL):
 
 MySQL Online DDL： [https://www.cnblogs.com/mysql-dba/p/6192897.html](https://www.cnblogs.com/mysql-dba/p/6192897.html)
 
@@ -18,7 +18,7 @@ MySQL Online DDL： [https://www.cnblogs.com/mysql-dba/p/6192897.html](https://w
 
 比如下面的写法unique_userid不会唯一，可以插入多条deleted_at为null的数据: 
 ```
-CREATE TABLE `pay_flow_qq`
+CREATE TABLE `pay_flow`
 (
     `id`              bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     `user_id`         bigint(20) unsigned DEFAULT NULL COMMENT '用户id',
@@ -58,18 +58,18 @@ SET FOREIGN_KEY_CHECKS=1;
 SELECT  @@FOREIGN_KEY_CHECKS;
 ```
 
-### 外键
-#### 添加外键
+## 外键
+### 添加外键
 ```
 ALTER TABLE `wenshu_data`.`lawyersintelprop` ADD CONSTRAINT `fk_lawyersintelprop__wenshu_id` FOREIGN KEY (`wenshu_id`) REFERENCES `wenshu_data`.`basicintelprop` (`wenshu_id`);
 ```
-#### 删除外键
+### 删除外键
 ```
 ALTER TABLE `wenshu_data`.`lawyerscomsecinsnot` DROP FOREIGN KEY `fk_lawyerscomsecinsnot__wenshu_id`;
 ```
 
-### 自增id
-#### 主键自增id
+## 自增id
+### 主键自增id
 ```
 MySQL [data_third_part]> alter table wenshu_info005 add id int;
 Query OK, 0 rows affected (6 min 35.09 sec)
@@ -83,29 +83,29 @@ MySQL [data_third_part]> alter table wenshu_info005 change id id int not null au
 Query OK, 129945 rows affected (3 min 19.04 sec)
 Records: 129945  Duplicates: 0  Warnings: 0
 ```
-#### 非主键自增id
+### 非主键自增id
 ```
 alter table basicintelprop add id int auto_increment Unique;
 ```
 
-### 索引：
-#### 普通增加索引
+## 索引：
+### 普通增加索引
 ```
 索引的通常命名： idx_<表名字>__<添加索引字段1>__<添加索引字段2>
 CREATE INDEX `idx_cnipsundata__agent` ON `cnipsundata` (`agent`)
 ```
-#### 删除索引
+### 删除索引
 ```sql
 ALTER TABLE `wenshu_data`.`lawyerinfo` DROP INDEX `idx_lawyerinfo__name`;
 ```
-#### 修改复合索引
+### 修改复合索引
 ```sql
 ALTER TABLE `wenshu_data`.`lawyerinfo` DROP INDEX `idx_lawyerinfo__name__lawyer_firm__region`, ADD INDEX `idx_lawyerinfo__name__lawyer_firm__region1` USING BTREE (`name`, `lawyer_firm`, `region`) comment '';
 ```
 ![composite-index](/assets/img/tool/mysql/composite-index.png)
 
-### 大表结构修改
-#### 添加字段：
+## 大表结构修改
+### 添加字段：
 ```
 1600万数据(51GB存储),表结构较大,添加字段, 用3小时40分钟：
 mysql> select id from cnipsundata order by id desc limit 1;
@@ -121,20 +121,20 @@ Records: 0  Duplicates: 0  Warnings: 0
 
 ```
 
-### 查看MySQL数据库大小
-#### 查看所有数据库大小
+## 查看MySQL数据库大小
+### 查看所有数据库大小
 ```sql
 select concat(round(sum(DATA_LENGTH/1024/1024),2),'MB') as data from INFORMATION_SCHEMA.TABLES;
 ```
-#### 查看指定数据库大小
+### 查看指定数据库大小
 ```sql
 select concat(round(sum(DATA_LENGTH/1024/1024),2),'MB') as data from INFORMATION_SCHEMA.TABLES where table_schema='CarData';
 ```
-#### 查看指定数据库的指定表的大小
+### 查看指定数据库的指定表的大小
 ```sql
 select concat(round(sum(DATA_LENGTH/1024/1024),2),'MB') as data from INFORMATION_SCHEMA.TABLES where table_schema='CarData' and table_name='driver020294';
 ```
-#### 查看指定数据库指定表的其他大小
+### 查看指定数据库指定表的其他大小
 ```sql
 select concat(round(sum(DATA_LENGTH/1024/1024),2),'MB') as data_size,
     -> concat(round(sum(MAX_DATA_LENGTH/1024/1024),2),'MB') as max_data_size,
@@ -143,7 +143,7 @@ select concat(round(sum(DATA_LENGTH/1024/1024),2),'MB') as data_size,
     -> from INFORMATION_SCHEMA.TABLES where table_schema='CarData' and table_name='driver020294';
 ```
 
-#### 插入更新语句ON DUPLICATE KEY UPDATE
+### 插入更新语句ON DUPLICATE KEY UPDATE
 - if-else写法(效率太差，每次都需要执行两条SQL语句; 高并发的情况下数据会出问题，不能保证原子性):
 ```
 if not exists (select node_name from node_status where node_name = target_name)
@@ -159,13 +159,13 @@ else
 INSERT INTO tablename(field1,field2, field3, ...) VALUES(value1, value2, value3, ...) ON DUPLICATE KEY UPDATE field1=value1,field2=value2, field3=value3, ...;
 ```
 
-#### 创建utf8mb4数据库
+### 创建utf8mb4数据库
 
 ```sql
 create database sina default character set utf8mb4 collate utf8mb4_unicode_ci;
 ```
 
-#### 任务系统表-基于date分区
+### 任务系统表-基于date分区
 
 ```sql
 CREATE TABLE task.`task_list_default` (
