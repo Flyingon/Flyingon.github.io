@@ -24,7 +24,7 @@ change cipher spec
 
 1. 三次握手，建立链接: 
 
-![三次握手](/assets/img/ssl/connect.jpeg)
+![三次握手](/assets/img/tcp/connect.jpeg)
 
 2. TLS成功: 
 
@@ -37,4 +37,4 @@ go get现象:
 go: git.code.oa.com/xytl/trpcproto/q_project_server@v0.1.770: unrecognized import path "git.code.oa.com/xytl/trpcproto/q_project_server": https fetch: Get "https://git.code.oa.com/xytl/trpcproto/q_project_server?go-get=1": x509: certificate has expired or is not yet valid: current time 2021-09-06T17:25:16+08:00 is after 2021-09-06T05:19:55Z
 ```
 
-![ssl_failed_cert](/assets/img/ssl/ssl_failed_cert.jpeg)
+![ssl_failed_cert](/assets/img/ssl/ssl_failed_cert.png)
