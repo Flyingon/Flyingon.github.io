@@ -1,7 +1,7 @@
 ---
 layout: post
 title: IT基础资源
-category: 计算机和OS
+category: 计算机和通信
 tags: [IT, CS, Knowledge]
 keywords: IT, CS, 计算机, 面试
 ---
