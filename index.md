@@ -2,10 +2,16 @@
 title: 记录分享成长
 layout: post
 ---
-![image](/assets/img/index.jpg)
 
 ## 关于博客
+此博客的目的是我遇到了一个问题，学习并解决了，记录一下: </br>
+1. 再遇到同样问题，就不慌了~
+2. 大家有幸看到了，希望给出更优秀的解决方案给予指导~
+
 - 博客基于: [Jekyll](http://jekyllrb.com/)
 - 托管于：[Github](https://pages.github.com)
 - 代码样式选择: [https://pygments.org/demo/#try](https://pygments.org/demo/#try): 
 pygmentize -f html -a .highlight -S solarized-light > pygments.css
+
+我去前面探探路。1,2,3,4~
+![image](/assets/img/index.jpg)
