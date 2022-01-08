@@ -6,14 +6,100 @@ tags: [go, golang, timer, cron, crontab]
 keywords: go, golang, timer, cron, crontab
 ---
 
-### 网址
+## 网址
 
-Cron官网: [https://godoc.org/github.com/robfig/cron](https://godoc.org/github.com/robfig/cron)
+[robfig-cron](https://godoc.org/github.com/robfig/cron) <br/>
+[go-time](https://golang.org/pkg/time/#pkg-examples)
 
-Timer官网: [https://golang.org/pkg/time/#pkg-examples](https://golang.org/pkg/time/#pkg-examples)
+## tick定时
 
-### Cron
-#### 格式
+#### 超时时间控制:
+```golang
+// tickExpired 执行7秒后结束
+func tickExpired() {
+	ticker := time.NewTicker(1 * time.Second)
+	expired := time.After(7 * time.Second)
+	defer ticker.Stop()
+	ticks := 0
+	for {
+		select {
+		case <-ticker.C:
+			ticks++
+			fmt.Println("tick定时器: ", ticks)
+		case <-expired:
+			fmt.Println("expired!")
+			return
+		}
+	}
+}
+```
+执行结果:
+![dail](/assets/img/gif/tickerexpireresult.gif)
+
+#### 次数控制:
+```golang
+// tickTimes 执行6次结束
+func tickTimes() {
+	ticker := time.NewTicker(1 * time.Second)
+	defer ticker.Stop()
+	ticks := 0
+	for {
+		select {
+		case <-ticker.C:
+			fmt.Println("tick定时器: ", ticks)
+			if ticks == 6 {
+				return
+			}
+			ticks++
+		}
+	}
+}
+```
+
+## timer定时
+
+#### 按月定时
+```golang
+func StartMonthlyTimer(f func()) {
+	go func() {
+		for {
+			f()
+			now := time.Now()
+			// 计算下个月零点
+			year := now.Year()
+			month := now.Month()
+			if month == time.December {
+				year += 1
+				month = time.January
+			} else {
+				month = time.Month(int(month) + 1)
+			}
+			next := time.Date(year, month, 1, 0, 0, 0, 0, time.Now().Location())
+			t := time.NewTimer(next.Sub(now))
+			<-t.C
+		}
+	}()
+}
+```
+
+#### 按分钟定时
+```golang
+func StartMinuteTimer(intMin uint, f func(interface{}), i interface{}) {
+	go func() {
+		for {
+			f(i)
+			now := time.Now()
+			next := now.Add(time.Duration(intMin) * time.Minute)
+			next = time.Date(next.Year(), next.Month(), next.Day(), next.Hour(), next.Minute(), 0, 0, next.Location())
+			t := time.NewTimer(next.Sub(now))
+			<-t.C
+		}
+	}()
+
+```
+
+## Cron
+### 格式
 
 Field name   | Mandatory? | Allowed values  | Allowed special characters
 ----------   | ---------- | --------------  | --------------------------
@@ -24,7 +110,7 @@ Day of month | Yes        | 1-31            | * / , - ?
 Month        | Yes        | 1-12 or JAN-DEC | * / , -
 Day of week  | Yes        | 0-6 or SUN-SAT  | * / , - ?
 
-#### 说明
+### 说明
 ```
 1）星号(*)
 表示 cron 表达式能匹配该字段的所有值。如在第5个字段使用星号(month)，表示每个月
@@ -41,7 +127,7 @@ Day of week  | Yes        | 0-6 or SUN-SAT  | * / , - ?
 5）问号(?)
 只用于日(Day of month)和星期(Day of week)，\表示不指定值，可以用于代替 *
 ```
-#### 配置示例
+### 配置示例
 
 Entry                  | Description                                | Equivalent To
 -----                  | -----------                                | -------------
@@ -66,9 +152,8 @@ Entry                  | Description                                | Equivalent
 
 每天的0点、13点、18点、21点都执行一次：0 0 0,13,18,21 * * ?
 ```
-#### 代码示例
-- 简单crontab任务
 
+#### 简单crontab任务
 ```golang
 package main
 
@@ -100,7 +185,7 @@ cron running : 5
 ...
 ```
 
-- 多个定时crontab任务
+#### 多个定时crontab任务
 
 ```golang
 package main
@@ -150,6 +235,7 @@ func main() {
     select{}
 }
 ```
+
 输出:
 ```
 testJob1...
@@ -170,47 +256,3 @@ testJob1...
 ...
 ```
 
-### timer定时
-
-代码示例:
-- 按月定时
-
-```golang
-func StartMonthlyTimer(f func()) {
-	go func() {
-		for {
-			f()
-			now := time.Now()
-			// 计算下个月零点
-			year := now.Year()
-			month := now.Month()
-			if month == time.December {
-				year += 1
-				month = time.January
-			} else {
-				month = time.Month(int(month) + 1)
-			}
-			next := time.Date(year, month, 1, 0, 0, 0, 0, time.Now().Location())
-			t := time.NewTimer(next.Sub(now))
-			<-t.C
-		}
-	}()
-}
-```
-
-- 按分钟定时
-
-```golang
-func StartMinuteTimer(intMin uint, f func(interface{}), i interface{}) {
-	go func() {
-		for {
-			f(i)
-			now := time.Now()
-			next := now.Add(time.Duration(intMin) * time.Minute)
-			next = time.Date(next.Year(), next.Month(), next.Day(), next.Hour(), next.Minute(), 0, 0, next.Location())
-			t := time.NewTimer(next.Sub(now))
-			<-t.C
-		}
-	}()
-
-```

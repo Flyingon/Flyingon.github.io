@@ -1,14 +1,22 @@
 ---
 layout: post
-title: 编译踩坑记录
+title: 编译和环境
 category: golang
-tags: [go, complie, 踩坑]
-keywords: go, complie, 踩坑
+tags: [go, complie, 编译, 环境]
+keywords: go, complie, 编译, 环境
 ---
+
+## 环境问题
+
+### 解决go包管理网址无法访问：proxy.golang.org
+默认使用的是proxy.golang.org，在国内无法访问，换一个国内能访问的代理地址:
+```
+go env -w GOPROXY=https://goproxy.cn
+```
 
 ## 编译报错
 
-### 链接错误(link issue)
+### CGO链接错误(link issue)
 
 - 问题现象
 
