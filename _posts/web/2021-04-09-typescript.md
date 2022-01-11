@@ -58,3 +58,9 @@ for (let index2 in arr) {
 }
 console.log(index2); //Compiler Error: Cannot find index2
 ```
+
+### 引用
+
+```
+npm i --save-dev @types/ws
+```
