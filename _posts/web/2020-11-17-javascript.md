@@ -9,6 +9,8 @@ keywords: web，js
 ### 资料
 - 重新介绍 JavaScript: [https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
 
+- 现代 JavaScript 教程: [https://zh.javascript.info/](https://zh.javascript.info/)
+
 ### 问题记录
 #### npm ERR! code ELIFECYCLE
 ```shell
