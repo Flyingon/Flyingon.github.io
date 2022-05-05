@@ -22,24 +22,26 @@ layout: default
 {% endif %}
 
 {% if site.reward %}
-<link  href="/assets/css/myreward.css" rel="stylesheet"  type="text/css">
- <div class="reward">
-		<div class="reward-button">赏 <span class="reward-code">
-			<span class="alipay-code"> <img class="alipay-img wdp-appear" src="/assets/img/social/Alipyspeed.png"><b>支付宝打赏</b> </span>
-			<span class="wechat-code"> <img class="wechat-img wdp-appear" src="/assets/img/social/Wechatpyspeed.png"><b>微信打赏</b> </span> </span>
-		</div>
-		<p class="reward-notice">来杯咖啡~</p>
-	</div>
+<link href="/assets/css/myreward.css" rel="stylesheet" type="text/css">
+<div class="reward">
+    <div class="reward-button">赏 <span class="reward-code">
+            <span class="alipay-code"> <img class="alipay-img wdp-appear"
+                    src="/assets/img/social/Alipyspeed.png"><b>支付宝打赏</b> </span>
+            <span class="wechat-code"> <img class="wechat-img wdp-appear"
+                    src="/assets/img/social/Wechatpyspeed.png"><b>微信打赏</b> </span> </span>
+    </div>
+    <p class="reward-notice">来杯咖啡~</p>
+</div>
 {% endif %}
 
 <div class="post-share">
     <div class="container">
         <a href="https://twitter.com/share?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&text={{ page.title }}"
-           target="_blank" class="post-share-icon twitter"></a>
+            target="_blank" class="post-share-icon twitter"></a>
         <a href="https://www.evernote.com/clip.action?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&title={{ page.title }}"
-           target="_blank" class="post-share-icon evernote"></a>
+            target="_blank" class="post-share-icon evernote"></a>
         <a href="http://service.weibo.com/share/share.php?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&title={{ page.title }}"
-           target="_blank" class="post-share-icon weibo"></a>
+            target="_blank" class="post-share-icon weibo"></a>
     </div>
 </div>
 
@@ -55,14 +57,34 @@ layout: default
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script>
     var gitalk = new Gitalk({
-		clientID: 'f4357cb6b3bd81364ac2',
-		clientSecret: 'a9e57039591f0e8fee24c4ba27c484411c8eef88',
-		repo: 'Flyingon.github.io',
-		owner: 'Flyingon',
-		admin: 'Flyingon',
-		id: md5(window.location.pathname),
-		distractionFreeMode: 'true'
+        clientID: 'f4357cb6b3bd81364ac2',
+        clientSecret: 'a9e57039591f0e8fee24c4ba27c484411c8eef88',
+        repo: 'Flyingon.github.io',
+        owner: 'Flyingon',
+        admin: 'Flyingon',
+        id: md5(window.location.pathname),
+        distractionFreeMode: 'true'
     });
     gitalk.render('disqus_thread')
 </script>
 {% endif %}
+
+<script>
+    window.onload = function () {
+        console.log("data report");
+        let url = "https://www.yuanzhaoyi.cn/statistics/pv";
+        let title = document.getElementsByClassName("post-title")[0].innerText;
+        let data = JSON.stringify({
+            "type": "blog",
+            "title": title,
+        });
+        $.post(url, data,
+            function (res) {
+                let data = JSON.parse(res);
+                console.log("statistics.pv res: ", res);
+            }
+        );
+    }
+
+    // let url = "http://127.0.0.1:8888/statistics/pv";
+</script>
