@@ -70,21 +70,18 @@ layout: default
 {% endif %}
 
 <script>
-    window.onload = function () {
-        console.log("data report");
-        let url = "https://www.yuanzhaoyi.cn/statistics/pv";
-        let title = document.getElementsByClassName("post-title")[0].innerText;
-        let data = JSON.stringify({
-            "type": "blog",
-            "title": title,
-        });
-        $.post(url, data,
-            function (res) {
-                let data = JSON.parse(res);
-                console.log("statistics.pv res: ", res);
-            }
-        );
-    }
-
+    let url = "https://www.yuanzhaoyi.cn/statistics/pv";
+    let title = document.getElementsByClassName("post-title")[0].innerText;
+    console.log("data report:", title);
+    let data = JSON.stringify({
+        "type": "blog",
+        "title": title,
+    });
+    $.post(url, data,
+        function (res) {
+            let data = JSON.parse(res);
+            console.log("statistics.pv res: ", res);
+        }
+    );
     // let url = "http://127.0.0.1:8888/statistics/pv";
 </script>
