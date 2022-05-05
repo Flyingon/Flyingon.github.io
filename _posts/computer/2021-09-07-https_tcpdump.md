@@ -71,14 +71,38 @@ _这个sessionticket包有什么做用呢？握手阶段用来建立TLS连接。
 
 ![application_data.png](/assets/img/ssl/application_data.png)
 
+## 关注点
+### 为什么需要3个随机数：
+```
+对于客户端：
+当其生成了Pre-master secret之后，会结合原来的A、B随机数，用DH算法计算出一个master secret，紧接着根据这个master secret推导出hash secret和session secret。
 
-## 常见问题
-go get现象: 
+对于服务端：
+当其解密获得了Pre-master secret之后，会结合原来的A、B随机数，用DH算法计算出一个master secret，紧接着根据这个master secret推导出hash secret和session secret。
+
+在客户端和服务端的master secret是依据三个随机数推导出来的，它是不会在网络上传输的，只有双方知道，不会有第三者知道。同时，客户端推导出来的session secret和hash secret与服务端也是完全一样的。
+
+那么现在双方如果开始使用对称算法加密来进行通讯，使用哪个作为共享的密钥呢？过程是这样子的：
+
+双方使用对称加密算法进行加密，用hash secret对HTTP报文做一次运算生成一个MAC，附在HTTP报文的后面，然后用session-secret加密所有数据（HTTP+MAC），然后发送。
+
+接收方则先用session-secret解密数据，然后得到HTTP+MAC，再用相同的算法计算出自己的MAC，如果两个MAC相等，证明数据没有被篡改。
+
+// MAC(Message Authentication Code)称为报文摘要，能够查知报文是否遭到篡改，从而保护报文的完整性。
+```
+```
+管是客户端还是服务器，都需要随机数，这样生成的密钥才不会每次都一样。由于SSL协议中证书是静态的，因此十分有必要引入一种随机因素来保证协商出来的密钥的随机性。对于RSA密钥交换算法来说，pre-master secret本身就是一个随机数，再加上hello消息中的随机，三个随机数通过一个密钥导出器最终导出一个对称密钥。pre-master secret的存在在于SSL协议不信任每个主机都能产生完全随机的随机数，如果随机数不随机，那么pre-mastersecret就有可能被猜出来，那么仅适用pre-master secret作为密钥就不合适了，因此必须引入新的随机因素，那么客户端和服务器加上pre-master secret三个随机数一同生成的密钥就不容易被猜出了，一个伪随机可能完全不随机，可是是三个伪随机就十分接近随机了，每增加一个自由度，随机性增加的可不是一。
+```
+
+## 问题现象
+### go get失败: 
 ```
 x509: certificate has expired or is not yet valid: current time 2021-09-06T17:25:16+08:00 is after 2021-09-06T05:19:55Z
 ```
 
 ## 参考：
+[https://datatracker.ietf.org/doc/rfc6101/](https://datatracker.ietf.org/doc/rfc6101/) <br/>
 
 [https://blog.csdn.net/liwenbo_csu/article/details/76691420](https://blog.csdn.net/liwenbo_csu/article/details/76691420) <br/>
-[https://blog.csdn.net/liangyihuai/article/details/53098482](https://blog.csdn.net/liangyihuai/article/details/53098482)
+[https://blog.csdn.net/liangyihuai/article/details/53098482](https://blog.csdn.net/liangyihuai/article/details/53098482) <br/>
+[https://blog.csdn.net/qq_31442743/article/details/116199453](https://blog.csdn.net/qq_31442743/article/details/116199453)
