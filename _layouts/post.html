@@ -69,14 +69,17 @@ layout: default
 </script>
 {% endif %}
 
+<script src="{{ "/assets/js/jquery-2.1.3.min.js" | prepend: site.baseurl }}"></script>
 <script>
+    
     let url = "https://www.yuanzhaoyi.cn/statistics/pv";
     let title = document.getElementsByClassName("post-title")[0].innerText;
-    console.log("data report:", title);
     let data = JSON.stringify({
         "type": "blog",
         "title": title,
     });
+
+    console.log("data report:", title);
     $.post(url, data,
         function (res) {
             let data = JSON.parse(res);
