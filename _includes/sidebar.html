@@ -1,7 +1,7 @@
 <aside id="sidebar" class="open">
   <div id="sidebar-left">
-    <a id="sidebar-avatar" href="{{ "/" | prepend: site.baseurl }}">
-      <img id="sidebar-avatar-img" alt="{{ site.tittle }}" src="{{ site.avatar | prepend: site.baseurl }}"/>
+    <a id="sidebar-avatar" href="{{ " /" | prepend: site.baseurl }}">
+      <img id="sidebar-avatar-img" alt="{{ site.tittle }}" src="{{ site.avatar | prepend: site.baseurl }}" />
     </a>
 
     <div id="sidebar-social">
@@ -13,39 +13,71 @@
     <ul id="sidebar-tags">
       <li class="sidebar-tag active" data-filter="recent">最新文章</li>
       {% if site.filter == 'category' %}
-        {% assign show_categories = "计算机和通信, 算法和数据结构, 数据库, 架构, 前端, golang, python, cpp, 工具, 游戏" | split: ", " %}
-        {% for category in show_categories %}
-          <li class="sidebar-tag" data-filter="{{ category }}">{{ category }}</li> 
-        {% endfor %}
-        <!-- {% for category in site.categories %}
+      {% assign show_categories = "计算机和通信, 算法和数据结构, 数据库, 架构, 前端, golang, python, cpp, 工具, 游戏" | split: ", " %}
+      {% for category in show_categories %}
+      <li class="sidebar-tag" data-filter="{{ category }}">{{ category }}</li>
+      {% endfor %}
+      <!-- {% for category in site.categories %}
           <li class="sidebar-tag" data-filter="{{ category | first }}">{{ category | first }}</li>
         {% endfor %} -->
       {% elsif site.filter == 'tag' %}
-        {% for tag in site.tags %}
-          <li class="sidebar-tag" data-filter="{{ tag | first }}">{{ tag | first }}</li>
-        {% endfor %}
+      {% for tag in site.tags %}
+      <li class="sidebar-tag" data-filter="{{ tag | first }}">{{ tag | first }}</li>
+      {% endfor %}
       {% endif %}
     </ul>
   </div>
 
   <div id="sidebar-right">
+
+    {% if site.showMenu %}
+    <script src="/assets/js/jquery-2.1.3.min.js"></script>
+    <script src="/assets/bootstrap-3/js/bootstrap.min.js"></script>
+    <link href="/assets/bootstrap-3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <ul class="nav nav-pills">
+      <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+          aria-expanded="false">
+          后台方案设计 <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <!-- <li><a href="#">任务调度</a></li> -->
+          <li><a target="_blank" href="https://res.yuanzhaoyi.cn/doc/architecture/%E9%80%9A%E7%94%A8%E6%8E%92%E8%A1%8C%E6%A6%9C%E8%AE%BE%E8%AE%A1.pdf#">通用排行榜</a></li>
+          <!-- <li><a href="#">数据一致性</a></li>
+          <li><a href="#">缓存机制</a></li> -->
+        </ul>
+      </li>   
+      <!-- <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+          aria-expanded="false">
+          经典学习 <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Nginx</a></li>
+          <li><a href="#">Redis</a></li>
+        </ul>
+      </li>  -->
+    </ul>
+    {% endif %}
+    
     <div id="search-box">
       <input id="search-input" type="text" placeholder="Search" />
     </div>
 
     <nav id="toc">
       {% if site.filter == 'category' %}
-        {% for post in site.posts %}
-          <a class="toc-link" data-tags="{{ post.categories | join: ' ' }}" href="{{ post.url }}">
-            {{ post.title }}
-          </a>
-        {% endfor %}
+      {% for post in site.posts %}
+      <a class="toc-link" data-tags="{{ post.categories | join: ' ' }}" href="{{ post.url }}">
+        {{ post.title }}
+      </a>
+      {% endfor %}
       {% elsif site.filter == 'tag' %}
-        {% for post in site.posts %}
-          <a class="toc-link" data-tags="{{ post.tags | join: ' ' }}" href="{{ post.url }}">
-            {{ post.title }}
-          </a>
-        {% endfor %}
+      {% for post in site.posts %}
+      <a class="toc-link" data-tags="{{ post.tags | join: ' ' }}" href="{{ post.url }}">
+        {{ post.title }}
+      </a>
+      {% endfor %}
       {% endif %}
     </nav>
   </div>
