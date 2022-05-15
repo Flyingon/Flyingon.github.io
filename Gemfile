@@ -1,3 +1,4 @@
+source "https://gems.ruby-china.com"
 
 gem "webrick", "~> 1.7"
 gem "kramdown-parser-gfm", "~> 1.1"
