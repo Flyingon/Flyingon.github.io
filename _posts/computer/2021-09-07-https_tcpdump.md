@@ -1,7 +1,7 @@
 ---
 layout: post
 title: https协议流程分析(ssl)
-category: 计算机和通信
+category: 计算机
 tags: [https, tcp, tls]
 keywords: https, tcp, tls
 ---

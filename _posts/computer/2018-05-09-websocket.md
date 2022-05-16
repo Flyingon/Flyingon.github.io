@@ -1,7 +1,7 @@
 ---
 layout: post
 title: websocket介绍
-category: 计算机和通信
+category: 计算机
 tags: [websocket]
 keywords: websocket
 ---
