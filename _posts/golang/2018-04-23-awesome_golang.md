@@ -8,35 +8,37 @@ keywords: golang, awesome
 
 ### 网站
 
-中文官网: [http://docscn.studygolang.com/](http://docscn.studygolang.com/)
+Go语言设计与实现：[https://draveness.me/golang/](https://draveness.me/golang/)
 
-官方指南: [https://github.com/golang/tour](https://github.com/golang/tour)
+中文官网：[http://docscn.studygolang.com/](http://docscn.studygolang.com/)
 
-下载地址: [https://golang.org/dl/](https://golang.org/dl/)
+官方指南：[https://github.com/golang/tour](https://github.com/golang/tour)
 
-github: [https://github.com/golang](https://github.com/golang)
+下载地址：[https://golang.org/dl/](https://golang.org/dl/)
 
-官方blog: [https://blog.golang.org/](https://blog.golang.org/)
+github：[https://github.com/golang](https://github.com/golang)
 
-awesome: [https://awesome-go.com/](https://awesome-go.com/)
+官方blog：[https://blog.golang.org/](https://blog.golang.org/)
 
-go语言圣经: [https://books.studygolang.com/gopl-zh/ch0/ch0-01.html](https://books.studygolang.com/gopl-zh/ch0/ch0-01.html)
+awesome：[https://awesome-go.com/](https://awesome-go.com/)
 
-圣经源代码: [https://github.com/adonovan/gopl.io](https://github.com/adonovan/gopl.io)
+go语言圣经：[https://books.studygolang.com/gopl-zh/ch0/ch0-01.html](https://books.studygolang.com/gopl-zh/ch0/ch0-01.html)
 
-优秀教程: [http://www.flysnow.org/2017/05/08/go-in-action-go-reader-writer.html](http://www.flysnow.org/2017/05/08/go-in-action-go-reader-writer.html)
+圣经源代码：[https://github.com/adonovan/gopl.io](https://github.com/adonovan/gopl.io)
 
-地道GoLang需注意: [https://www.jianshu.com/p/29543b642485](https://www.jianshu.com/p/29543b642485)
+优秀教程：[http://www.flysnow.org/2017/05/08/go-in-action-go-reader-writer.html](http://www.flysnow.org/2017/05/08/go-in-action-go-reader-writer.html)
 
-linux下调试: [https://github.com/go-delve/delve](https://github.com/go-delve/delve)
+地道GoLang需注意：[https://www.jianshu.com/p/29543b642485](https://www.jianshu.com/p/29543b642485)
 
-代码检查: [https://github.com/gojp/goreportcard](https://github.com/gojp/goreportcard)
+linux下调试：[https://github.com/go-delve/delve](https://github.com/go-delve/delve)
 
-标准目录结构: [https://github.com/golang-standards/project-layout](https://github.com/golang-standards/project-layout)
+代码检查：[https://github.com/gojp/goreportcard](https://github.com/gojp/goreportcard)
 
-awesome-golang: [https://github.com/avelino/awesome-go](https://github.com/avelino/awesome-go)
+标准目录结构：[https://github.com/golang-standards/project-layout](https://github.com/golang-standards/project-layout)
 
-golang-open-source: [https://github.com/hackstoic/golang-open-source-projects](https://github.com/hackstoic/golang-open-source-projects)
+awesome-golang：[https://github.com/avelino/awesome-go](https://github.com/avelino/awesome-go)
+
+golang-open-source：[https://github.com/hackstoic/golang-open-source-projects](https://github.com/hackstoic/golang-open-source-projects)
 
 
 ### 常用模块:
