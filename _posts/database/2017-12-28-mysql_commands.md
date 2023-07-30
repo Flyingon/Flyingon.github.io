@@ -6,6 +6,52 @@ tags: [Mysql命令记录]
 keywords: mysql, sql
 ---
 
+## 密码修改：
+##### mysql 启动时跳过密码检查
+```
+mysqld --defaults-file=/etc/my.cnf --skip-grant-tables
+```
+
+##### 无密码登陆
+```
+mysql -S /data/mysql_data/mysql.sock
+```
+
+##### 刷权限
+```
+flush privileges;
+```
+
+##### 切换用户
+```
+use mysql;
+```
+
+##### 改密码
+version >= 8.0
+```
+alter user'root'@'localhost' identified by 'new password';
+```
+version < 8.0
+```
+update user set password=password("new password") where user="root";
+```
+
+##### 刷权限
+```
+flush privileges;
+```
+
+## 设置MYSQL允许用IP访问
+
+```
+mysql>use mysql;
+mysql>update user set host = '%'  where user ='root';
+mysql>flush privileges;
+mysql>select 'host','user' from user where user='root';
+mysql>quit
+```
+
 ## 在线表结构修改(Online DDL):
 
 MySQL Online DDL： [https://www.cnblogs.com/mysql-dba/p/6192897.html](https://www.cnblogs.com/mysql-dba/p/6192897.html)
