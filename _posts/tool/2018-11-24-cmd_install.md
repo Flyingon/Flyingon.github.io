@@ -1,11 +1,44 @@
 ---
 layout: post
-title: yum命令格式参考
+title: 操作系统安装工具汇总
 category: 工具
-tags: [yum, linux]
-keywords: yum, linux
+tags: [brew, apt-get, dpkg, yum]
+keywords: brew, apt-get, dpkg, yum
 ---
 
+## brew
+
+## apt-get
+### 基本命令
+安装，会自动安装依赖包
+```
+sudo apt-get --fix-broken install ./xxx.deb
+```
+
+## dpkg
+### 基本命令
+安装，不会自动安装依赖包
+```
+sudo dpkg -i xxx.deb  
+```
+
+查看
+```
+dpkg -l | grep xxx
+```
+
+卸载
+```
+sudo dpkg -r xxx
+```
+
+帮助
+```
+dpkg --help
+```
+
+
+## yum
 ### 命令选项:
 ```
   -h, --help            show this help message and exit
