@@ -14,7 +14,7 @@ layout: post
 
 - C++实时转汇编: [https://godbolt.org/](https://godbolt.org/)
 - 代码执行可视化: [https://pythontutor.com/visualize.html#mode=edit](https://pythontutor.com/visualize.html#mode=edit)
-- 算法可视化: [https://visualgo.net/](https://visualgo.net/)
+- 算法可视化: [VisuAlgo](https://visualgo.net/) <br/> [cs.usfca.edu-B+Tree](https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html)
 
 - 博客基于: [Jekyll](http://jekyllrb.com/)
 - 托管于：[Github](https://pages.github.com)
