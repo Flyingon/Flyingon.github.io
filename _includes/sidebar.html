@@ -1,7 +1,7 @@
 <aside id="sidebar" class="open">
   <div id="sidebar-left">
     <a id="sidebar-avatar" href="{{ " /" | prepend: site.baseurl }}">
-      <img id="sidebar-avatar-img" alt="{{ site.tittle }}" src="{{ site.avatar | prepend: site.baseurl }}" />
+      <img id="sidebar-avatar-img" alt="{{ site.title }}" src="{{ site.avatar | prepend: site.baseurl }}" />
     </a>
 
     <div id="sidebar-social">
@@ -13,13 +13,10 @@
     <ul id="sidebar-tags">
       <li class="sidebar-tag active" data-filter="recent">最新文章</li>
       {% if site.filter == 'category' %}
-      {% assign show_categories = "Rust, 游戏开发, 计算机, 数据库, 前端, golang, python, cpp, 架构, 工具" | split: ", " %}
-      {% for category in show_categories %}
-      <li class="sidebar-tag" data-filter="{{ category }}">{{ category }}</li>
+      {% assign sorted_categories = site.categories | sort %}
+      {% for category in sorted_categories %}
+      <li class="sidebar-tag" data-filter="{{ category[0] }}">{{ category[0] }}</li>
       {% endfor %}
-      <!-- {% for category in site.categories %}
-          <li class="sidebar-tag" data-filter="{{ category | first }}">{{ category | first }}</li>
-        {% endfor %} -->
       {% elsif site.filter == 'tag' %}
       {% for tag in site.tags %}
       <li class="sidebar-tag" data-filter="{{ tag | first }}">{{ tag | first }}</li>

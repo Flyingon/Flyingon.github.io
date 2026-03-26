@@ -1,12 +1,14 @@
 # Site settings
-title: Flyinon的博客
+title: Flyingon的博客
 email: yuan.zhaoyi@163.com
 description: > # this means to ignore newlines until "baseurl:"
-  Flyingon的博客
+  记录软件开发工程师的成长
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://blog.yuanzhaoyi.cn"  # the base hostname & protocol for your site
+url: "https://blog.yuanzhaoyi.cn"  # the base hostname & protocol for your site
 rss_url: /pages/feed.xml
 author: Zhaoyi Yuan
+lang: zh-CN
+timezone: Asia/Shanghai
 
 # Sidebar filter
 # Choose 'tag' or 'category' as filter in sidebar.
@@ -48,7 +50,7 @@ kramdown:
 
 # Jekyll Plugin
 # https://help.github.com/articles/adding-jekyll-plugins-to-a-github-pages-site/
-gems:
+plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-feed
@@ -71,4 +73,3 @@ comments:
 reward: true
 
 showMenu: true
-
