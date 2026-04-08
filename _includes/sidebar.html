@@ -13,9 +13,8 @@
     <ul id="sidebar-tags">
       <li class="sidebar-tag active" data-filter="recent">最新文章</li>
       {% if site.filter == 'category' %}
-      {% assign sorted_categories = site.categories | sort %}
-      {% for category in sorted_categories %}
-      <li class="sidebar-tag" data-filter="{{ category[0] }}">{{ category[0] }}</li>
+      {% for category in site.category_order %}
+      <li class="sidebar-tag" data-filter="{{ category }}">{{ category }}</li>
       {% endfor %}
       {% elsif site.filter == 'tag' %}
       {% for tag in site.tags %}
