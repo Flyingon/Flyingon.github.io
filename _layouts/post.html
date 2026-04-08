@@ -48,6 +48,24 @@ layout: default
 </div>
 {% endif %}
 
+
+<div id="img-lightbox" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);z-index:9999;cursor:zoom-out;justify-content:center;align-items:center">
+  <img id="img-lightbox-pic" style="max-width:95%;max-height:95%;object-fit:contain" />
+</div>
+<script>
+(function(){
+  var overlay = document.getElementById('img-lightbox');
+  var pic = document.getElementById('img-lightbox-pic');
+  document.querySelector('.post').addEventListener('click', function(e){
+    if(e.target.tagName === 'IMG' && !e.target.closest('#img-lightbox')){
+      pic.src = e.target.src;
+      overlay.style.display = 'flex';
+    }
+  });
+  overlay.addEventListener('click', function(){ overlay.style.display = 'none'; });
+})();
+</script>
+
 {% if page.home != true %}
 <script src="/assets/js/jquery-2.1.3.min.js"></script>
 <script>

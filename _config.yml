@@ -50,6 +50,9 @@ markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+  math_engine: mathjax
+
+mathjax: enabled
 
 #markdown: redcarpet
 #redcarpet:

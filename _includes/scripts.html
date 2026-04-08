@@ -4,7 +4,13 @@
 <script src="{{ "/assets/js/main.js" | prepend: site.baseurl }}"></script>
 
 {% if site.mathjax == 'enabled' %}
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+MathJax = {
+  tex: { inlineMath: [['\\(','\\)'], ['$','$']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 {% endif %}
 
 {% if site.ga %}

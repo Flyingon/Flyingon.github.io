@@ -103,7 +103,10 @@ $(function() {
     if (filter === 'recent') {
       toc.slice(0, {{ site.recent_num }}).fadeIn(350);
     } else {
-      $('.toc-link[data-tags~=' + filter + ']').fadeIn(350);
+      $('.toc-link').filter(function() {
+        var tags = $(this).attr('data-tags').split('|');
+        return tags.indexOf(filter) !== -1;
+      }).fadeIn(350);
     }
     $(this).addClass('active').siblings().removeClass('active');
   });
